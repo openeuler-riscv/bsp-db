@@ -1,0 +1,52 @@
+MUSE PI:
+  hw_rev:
+    - V30
+  vendor: !ref { resc: spacemit/vendor.yml, category: products }
+  soc: !ref { resc: spacemit/m1.yml, category: products }
+  type: SBC
+  status: WIP
+  hw_features:
+    ram:
+      type: LPDDR4X
+      rate: 2666MT
+      width: 32
+      capacity:
+        - 8GB
+        - 16GB
+    storage:
+      - type: NOR Flash
+        capacity:
+          - 8MB
+      - type: eMMC
+        revision: '5.1'
+        capacity:
+          - 32GB
+      - type: microSD
+        revision: SDXC 3.0
+      - type: M.2
+        revision: M-Key, PCIe2.0x2
+        nums: 2
+    connectivity:
+      - type: USB-A
+        revision: '3.0'
+        nums: 1
+      - type: USB-A
+        revision: '2.0'
+        nums: 1
+      - type: USB-C
+        revision: 2.0 OTG
+        nums: 1
+      - type: Ethernet
+        revision: 1GbE
+        nums: 2
+      - type: WiFi
+        revision: 802.11 a/b/g/n/ac
+      - type: Bluetooth
+        revision: '4.1'
+      - type: HDMI
+        revision: '1.4'
+      - type: MIPI-CSI
+        revision: 4-lanes
+        nums: 2
+      - type: MIPI-DSI
+        revision: 4-lanes

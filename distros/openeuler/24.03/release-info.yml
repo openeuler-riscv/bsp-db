@@ -1,0 +1,12 @@
+24.03-LTS:
+  belongs_to: !ref { resc: openeuler/distro.yml, category: distros }
+  release_date: May, 2024
+  components:
+    - name: glibc
+      version: 2.38-47.oe2403sp1
+    - name: gcc
+      version: 12.3.1-36.oe2403
+    - name: llvm
+      version: 17.0.6-14.oe2403
+    - name: qemu
+      version: 8.2.0-21.oe2403

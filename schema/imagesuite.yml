@@ -1,0 +1,101 @@
+__root__:
+  type: dict
+  schema:
+    belongs_to:
+      # Each image suite is built on top of exactly one distribution release.
+      required: true
+      type: reference
+    compatible:
+      # This image suite may be applicable to multi boards.
+      required: true
+      type: list
+      schema:
+        type: reference
+    kernel:
+      # Multiple kernel options may be available to a single distribution release.
+      # But a single image suite must only ship one of those kernels.
+      required: true
+      type: dict
+      schema:
+        type:
+          required: true
+          type: string
+          oneof_regex:
+            - OLK
+            - RVCK
+            - UPSTREAM
+            - VENDOR
+            - UNKNOWN
+        branch:
+          # Upstream kernel tag that the shipped kernel is built on top of.
+          required: true
+          type: string
+          regex: '^[\d]+.[\d]+$'
+        version:
+          required: true
+          type: string
+          regex: '[a-zA-Z0-9-.]+'
+    userspace:
+      # Key feature of userspace components: headless/xfce/...
+      required: true
+      type: string
+      regex: '[a-zA-Z0-9]+'
+    isa:
+      # Userspace ISA configuration
+      required: true
+      type: dict
+      schema:
+        profile:
+          required: true
+          type: string
+        extensions:
+          required: false
+          type: list
+          schema:
+            type: string
+    type:
+      required: true
+      type: string
+      oneof_regex:
+        - Installer
+        - RawImage
+    features:
+      required: true
+      type: list
+      anyof_regex:
+        - EFI
+        - BOOTSTD
+        - LINUXBOOT
+        - ACPI
+        - FDT
+    files:
+      required: true
+      type: list
+      schema:
+        type: dict
+        schema:
+          url:
+            required: true
+            type: string
+            regex: &url_matching
+                     '[a-zA-Z0-9:\/\-_.]+'
+          tags:
+            # File-specific tags, such as system-image/firmware/tools
+            required: false
+            type: list
+            schema:
+              type: string
+          hash:
+            required: false
+            type: dict
+            keysrules:
+              type: string
+              oneof_regex:
+                - sha256
+            valuesrules:
+              type: string
+    docs:
+      required: false
+      type: list
+      schema:
+        type: reference

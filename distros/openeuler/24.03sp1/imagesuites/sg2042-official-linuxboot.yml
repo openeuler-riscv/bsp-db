@@ -1,0 +1,28 @@
+sg2042-24.03.sp1:
+  belongs_to: !ref { resc: openeuler/24.03sp1/release-info.yml, category: distros }
+  compatible:
+    - !ref { resc: milkv/pioneer.yml, category: products }
+  kernel:
+    type: RVCK
+    branch: '6.6'
+    version: 6.6.0-72.0.0.76.oe2403sp1
+  userspace: Xfce4
+  isa:
+    profile: RVA20
+    extensions: [ ]
+  type: Installer
+  features:
+    - LINUXBOOT
+    - FDT
+  files:
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS-SP1/embedded_img/riscv64/SG2042/openEuler-24.03-LTS-SP1-riscv64-sg2042.img.zip
+      tags:
+        - system-image
+      hash:
+        sha256: 9a99c6a227eaf034f6cb0e44f342a5f3824d08c3f9fc4f58532f44e156f63f47
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS-SP1/embedded_img/riscv64/SG2042/sg2042_firmware_linuxboot.img.zip
+      tags:
+        - firmware
+      hash:
+        sha256: 1d1e47ce2cbbeda528c4338030f914c4905af89fc939783e3ff80fefa935c57d
+  docs: [ ]

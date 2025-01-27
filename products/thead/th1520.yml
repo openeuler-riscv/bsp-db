@@ -1,0 +1,6 @@
+TH1520:
+  release_date: '2022'
+  harts:
+    - name: Xuantie C910
+      nums: 4
+      freq: 2.5GHz

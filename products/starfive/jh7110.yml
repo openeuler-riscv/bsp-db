@@ -1,0 +1,10 @@
+JH7110:
+  release_date: '2022'
+  harts:
+    - name: SiFive U74
+      nums: 4
+      freq: 1.5GHz
+    - name: SiFive S7
+      nums: 1
+    - name: SiFive E24
+      nums: 1

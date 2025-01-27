@@ -1,0 +1,5 @@
+qemu-system:
+  vendor: !ref { resc: qemu/vendor.yml, category: products }
+  soc: !ref { resc: qemu/virt.yml, category: products }
+  type: Emulated
+  status: SUPPORTED

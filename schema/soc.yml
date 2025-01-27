@@ -1,0 +1,22 @@
+__root__:
+  type: dict
+  schema:
+    release_date:
+      required: true
+      type: string
+    harts:
+      required: true
+      type: list
+      schema:
+        type: dict
+        schema:
+          name:
+            required: true
+            type: string
+          nums:
+            required: true
+            type: integer
+          freq:
+            required: false
+            type: string
+            regex: '^[\d.]+[MG]Hz$'

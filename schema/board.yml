@@ -1,0 +1,101 @@
+__root__:
+  type: dict
+  schema:
+    vendor:
+      required: true
+      type: reference
+    hw_rev:
+      required: false
+      type: list
+      schema:
+        type: string
+        regex: '[a-zA-Z0-9]+'
+    soc:
+      required: true
+      type: reference
+    type:
+      required: true
+      anyof_regex: &board_types
+        - SBC
+        - EVB
+        - SoM
+        - SoM\+Carrier
+        - ITX
+        - ATX
+        - mATX
+        - miniPC
+        - Server
+        - Emulated
+    pictures:
+      required: false
+      type: list
+      schema:
+        type: reference
+    status:
+      required: true
+      type: string
+      oneof_regex:
+        - WIP
+        - SUPPORTED
+        - DROPPED
+    hw_features:
+      required: false
+      type: dict
+      schema:
+        ram:
+          required: true
+          type: dict
+          schema:
+            type:
+              required: true
+              type: string
+              regex: '[a-zA-Z0-9 ]+'
+            rate:
+              required: false
+              type: string
+              regex: '[0-9]+MT'
+            width:
+              required: false
+              type: integer
+            capacity:
+              required: true
+              type: list
+              schema: &capacity_value
+                type: string
+                oneof_regex:
+                  - '^[\d]+[GM]B$'
+                  - '^NC$'
+        storage:
+          required: true
+          type: list
+          schema:
+            type: dict
+            schema:
+              type:
+                required: true
+                type: string
+              revision:
+                required: false
+                type: string
+              capacity:
+                required: false
+                type: list
+                schema: *capacity_value
+              nums:
+                required: false
+                type: integer
+        connectivity:
+          required: true
+          type: list
+          schema:
+            type: dict
+            schema:
+              type:
+                required: true
+                type: string
+              revision:
+                required: false
+                type: string
+              nums:
+                required: false
+                type: integer

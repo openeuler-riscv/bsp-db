@@ -1,0 +1,31 @@
+official-24.03:
+  belongs_to: !ref { resc: openeuler/24.03/release-info.yml, category: distros }
+  compatible:
+    - !ref { resc: milkv/pioneer.yml, category: products }
+    - !ref { resc: qemu/system.yml, category: products }
+  kernel:
+    type: RVCK
+    branch: '6.6'
+    version: '6.6'
+  userspace: Xfce4
+  isa:
+    profile: RVA20
+    extensions: [ ]
+  type: Installer
+  features:
+    - EFI
+    - FDT
+  files:
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/SG2042/sg2042_firmware_uefi.img.zip
+      tags:
+        - firmware
+        - milkv/pioneer
+      hash:
+        sha256: d7a936304bc01dfb8ccb47dc6df6527aecba4886940313355f68283dbc32fdf5
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/ISO/riscv64/openEuler-24.03-LTS-riscv64-dvd.iso
+      tags:
+        - os-installer
+      hash:
+        sha256: f49a5da648c53af30aa1a5bcc784685d75baca08743c840889bff32655b6a4e1
+  docs:
+    - !ref { resc: milkv/pioneer-oerv2403-uefi.md, category: docs }
