@@ -76,6 +76,12 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
+校验 YAML：
+
+```shell
+make -j$(nproc) validate
+```
+
 生成 JSON：
 
 ```shell

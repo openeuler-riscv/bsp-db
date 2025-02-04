@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import os.path
+from filelock import FileLock
 import yml_reftag
 import json
 
@@ -44,14 +45,16 @@ def main(args: argparse.Namespace):
     }
     distro_release['imagesuites'].append(img_json)
     for board_ref in img_yml[img_name]['compatible']:
-        with open(os.path.splitext(os.path.join(args.json_tree, board_ref.category, board_ref.resc))[0] + '.json', 'r') as fp:
-            board_json = json.load(fp)
-        if distro_name in board_json['os']:
-            board_json['os'][distro_name].append(distro_release)
-        else:
-            board_json['os'][distro_name] = [distro_release]
-        with open(os.path.splitext(os.path.join(args.json_tree, board_ref.category, board_ref.resc))[0] + '.json', 'w') as fp:
-            json.dump(board_json, fp, indent=2)
+        board_json_file = os.path.splitext(os.path.join(args.json_tree, board_ref.category, board_ref.resc))[0] + '.json'
+        with FileLock(board_json_file + ".lock", timeout=-1):
+            with open(board_json_file, 'r') as fp:
+                board_json = json.load(fp)
+            if distro_name in board_json['os']:
+                board_json['os'][distro_name].append(distro_release)
+            else:
+                board_json['os'][distro_name] = [distro_release]
+            with open(board_json_file, 'w') as fp:
+                json.dump(board_json, fp, indent=2)
 
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser()

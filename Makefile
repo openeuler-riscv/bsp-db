@@ -57,6 +57,8 @@ validate:	$(ALL_BOARDS_VALIDATION) \
 			$(ALL_DISTROS_VALIDATION)
 
 ALL_BOARDS_JSON := $(patsubst %.yml,%.json,$(addprefix $(OUTPUT_DIR)/,$(BOARDS)))
+# Always rebuild board level json, to satisfy imagesuite.parse
+.PHONY: $(ALL_BOARDS_JSON)
 $(ALL_BOARDS_JSON): $(OUTPUT_DIR)/%.json: %.yml
 	$(dir_guard)
 	./scripts/gen_board_json.py -i $^ -o $@
@@ -64,12 +66,13 @@ $(ALL_BOARDS_JSON): $(OUTPUT_DIR)/%.json: %.yml
 per_board_info: $(ALL_BOARDS_JSON)
 ALL_IMAGESUITE_PARSE := $(addsuffix .imagesuite.parse,$(IMAGESUITES))
 .PHONY: $(ALL_IMAGESUITE_PARSE)
-$(ALL_IMAGESUITE_PARSE): %.imagesuite.parse: % per_board_info
-	./scripts/parse_imagesuite.py -i $< -j $(OUTPUT_DIR)
+$(ALL_IMAGESUITE_PARSE): %.imagesuite.parse : % per_board_info
+	./scripts/parse_imagesuite.py -i $* -j $(OUTPUT_DIR)
 .PHONY: per_imagesuite_info
 per_imagesuite_info: $(ALL_IMAGESUITE_PARSE)
+	rm -f $(addsuffix .lock,$(ALL_BOARDS_JSON))
 .PHONY: per_board_json
-per_board_json: validate per_board_info per_imagesuite_info
+per_board_json: per_board_info per_imagesuite_info
 .PHONY: per_board_json_clean
 per_board_json_clean:
 	rm -f $(ALL_BOARDS_JSON)
