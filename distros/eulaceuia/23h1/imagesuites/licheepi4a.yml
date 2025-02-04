@@ -6,7 +6,7 @@ eulaceuia-23h1:
     type: VENDOR
     branch: '5.10'
     version: '5.10'
-  userspace: All
+  userspace: xfce4
   isa:
     profile: RVA20
   type: RawImage

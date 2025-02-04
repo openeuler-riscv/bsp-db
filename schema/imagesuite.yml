@@ -6,7 +6,7 @@ __root__:
       required: true
       type: reference
     compatible:
-      # This image suite may be applicable to multi boards.
+      # This image suite may be applicable to multiple boards.
       required: true
       type: list
       schema:
@@ -28,6 +28,7 @@ __root__:
             - UNKNOWN
         branch:
           # Upstream kernel tag that the shipped kernel is built on top of.
+          # This is a filter key.
           required: true
           type: string
           regex: '^[\d]+.[\d]+$'
@@ -36,18 +37,26 @@ __root__:
           type: string
           regex: '[a-zA-Z0-9-.]+'
     userspace:
-      # Key feature of userspace components: headless/xfce/...
+      # Key feature of userspace components
+      # This is a filter key.
       required: true
       type: string
-      regex: '[a-zA-Z0-9]+'
+      oneof_regex:
+        - Headless
+        - xfce4
     isa:
       # Userspace ISA configuration
       required: true
       type: dict
       schema:
         profile:
+          # This is a filter key.
           required: true
           type: string
+          oneof_regex:
+            - RVA20
+            - RVA22
+            - RVA23
         extensions:
           required: false
           type: list
@@ -78,7 +87,7 @@ __root__:
             required: true
             type: string
             regex: &url_matching
-                     '[a-zA-Z0-9:\/\-_.]+'
+                '[a-zA-Z0-9:\/\-_.]+'
           tags:
             # File-specific tags, such as system-image/firmware/tools
             required: false

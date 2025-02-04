@@ -7,7 +7,7 @@ official-24.03:
     type: RVCK
     branch: '6.6'
     version: '6.6'
-  userspace: Xfce4
+  userspace: xfce4
   isa:
     profile: RVA20
     extensions: [ ]
