@@ -3,9 +3,9 @@ eulaceuia-23h1:
   compatible:
     - !ref { resc: sipeed/licheepi_4a,yml, category: products }
   kernel:
-    type: UNKNOWN
-    branch: '6.1'
-    version: '6.1'
+    type: VENDOR
+    branch: '5.10'
+    version: '5.10'
   userspace: All
   isa:
     profile: RVA20
