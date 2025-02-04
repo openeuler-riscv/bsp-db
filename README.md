@@ -73,7 +73,7 @@
 ```shell
 python3 -m venv venv
 source venv/bin/activate
-pip3 install -r requirements
+pip3 install -r requirements.txt
 ```
 
 生成 JSON：
@@ -84,6 +84,12 @@ make O=./build -j$(nproc)
 
 生成的 JSON 数据位于 `./build` 目录下。
 
+当有脚本改动或构建系统改动时，清除构建产物并重新生成：
+
+```shell
+make clean; make O=./build -j$(nproc)
+```
+
 ## 数据维护
 
 ### 增添新镜像套件
@@ -91,3 +97,8 @@ make O=./build -j$(nproc)
 在 `distros/${distro}/${release}/imagesuites` 下创建一个新的 `.yml` 文件，命名应简短但包含镜像支持的板卡，关键特性等。
 
 在该文件内填入必要信息。
+
+## TBD
+
+- [ ] YAML 自定义文件引用检查
+- [ ] 精确到输出目标的资源文件构建规则
