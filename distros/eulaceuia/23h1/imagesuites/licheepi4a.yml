@@ -4,8 +4,8 @@ eulaceuia-23h1:
     - !ref { resc: sipeed/licheepi_4a,yml, category: products }
   kernel:
     type: VENDOR
-    branch: '5.10'
-    version: '5.10'
+    branch: '5.4'
+    version: '5.4.61-1.2-rvboards'
   userspace: xfce4
   isa:
     profile: RVA20
