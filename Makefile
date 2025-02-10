@@ -69,6 +69,7 @@ ALL_IMAGESUITE_PARSE := $(addsuffix .imagesuite.parse,$(IMAGESUITES))
 $(ALL_IMAGESUITE_PARSE): %.imagesuite.parse : % per_board_info
 	./scripts/parse_imagesuite.py -i $* -j $(OUTPUT_DIR)
 .PHONY: per_imagesuite_info
+.NOTPARALLEL: per_imagesuite_info # Requires GNU Make v4.4+ to properly work.
 per_imagesuite_info: $(ALL_IMAGESUITE_PARSE)
 	rm -f $(addsuffix .lock,$(ALL_BOARDS_JSON))
 .PHONY: per_board_json
