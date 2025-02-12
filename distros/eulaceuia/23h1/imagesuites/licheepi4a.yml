@@ -9,7 +9,7 @@ eulaceuia-23h1:
   userspace: xfce4
   isa:
     profile: RVA20
-  type: RawImage
+  type: RawDiskImage
   features:
     - RawImage
   files:

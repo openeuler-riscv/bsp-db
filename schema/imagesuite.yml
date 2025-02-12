@@ -67,7 +67,7 @@ __root__:
       type: string
       oneof_regex:
         - Installer
-        - RawImage
+        - RawDiskImage
     features:
       required: true
       type: list
