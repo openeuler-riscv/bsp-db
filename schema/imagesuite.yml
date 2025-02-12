@@ -75,6 +75,7 @@ __root__:
         - EFI
         - BOOTSTD
         - LINUXBOOT
+        - UBOOT
         - ACPI
         - FDT
     files:

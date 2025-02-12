@@ -1,0 +1,39 @@
+lpi4a-24.03:
+  belongs_to: !ref { resc: openeuler/24.03/release-info.yml, category: distros }
+  compatible:
+    - !ref { resc: sipeed/licheepi_4a.yml, category: products }
+  kernel:
+    type: RVCK
+    branch: '6.6'
+    version: 6.6.0-27.0.0.31.oe2403
+  userspace: xfce4
+  isa:
+    profile: RVA20
+    extensions: [ ]
+  type: RawDiskImage
+  features:
+    - UBOOT
+    - FDT
+  files:
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/lpi4a/openEuler-24.03-LTS-riscv64-lpi4a-base-boot.ext4.zst
+      tags:
+        - boot-image
+      hash:
+        sha256: 4a1d3e441c328443c79e79a00ddbbd649526c260aeadeb3b666f614cc82e6db8
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/lpi4a/openEuler-24.03-LTS-riscv64-lpi4a-base-root.ext4.zst
+      tags:
+        - system-image
+      hash:
+        sha256: 54ebfeedef6dfc93e66198e2e8f8e03b65c71c1728bc9578173f5f67d3091074
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/lpi4a/u-boot-with-spl-lpi4a-16g.bin
+      tags:
+        - firmware
+      hash:
+        sha256: 7c7ea37d12511a454c5e1c4beaaae81d9d1934004a667998ddb8723eecff1a13
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/lpi4a/u-boot-with-spl-lpi4a.bin
+      tags:
+        - firmware
+      hash:
+        sha256: 7214f141ca4d3e88a8471fe2303d6722116102059d170186225f8dc02a7967a2
+  docs:
+    - !ref { resc: sipeed/lpi4a-uboot-official-image.md, category: docs }
