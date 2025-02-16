@@ -3,6 +3,8 @@ LicheePi 4A:
   soc: !ref { resc: thead/th1520.yml, category: products }
   type: SoM+Carrier
   status: SUPPORTED
+  pictures:
+    - !ref { resc: sipeed/lpi4a/lpi4a.png, category: resources }
   hw_features:
     ram:
       type: LPDDR4X
