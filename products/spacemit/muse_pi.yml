@@ -5,6 +5,9 @@ MUSE PI:
   soc: !ref { resc: spacemit/m1.yml, category: products }
   type: SBC
   status: WIP
+  pictures:
+    - !ref { resc: spacemit/muse-pi/musepi_front.webp, category: resources }
+    - !ref { resc: spacemit/muse-pi/musepi_back.webp, category: resources }
   hw_features:
     ram:
       type: LPDDR4X
