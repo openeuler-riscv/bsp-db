@@ -3,6 +3,8 @@ VisionFive 2:
   soc: !ref { resc: starfive/jh7110.yml, category: products }
   type: SBC
   status: WIP
+  pictures:
+    - !ref { resc: starfive/vf2/vf2.jpg, category: resources }
   hw_features:
     ram:
       type: LPDDR4
