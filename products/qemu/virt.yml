@@ -1,3 +1,4 @@
 virt:
-  release_date: 19970101
+  vendor: !ref { resc: qemu/vendor.yml, category: products }
+  release_date: '19970101'
   harts: []

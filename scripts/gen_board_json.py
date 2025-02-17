@@ -10,6 +10,7 @@ def fetch_soc(ref, search_path):
     soc_name = next(iter(soc_yml.keys()))
     return {
         'name': soc_name,
+        'vendor': fetch_vendor(soc_yml[soc_name]['vendor'], search_path),
         'harts': soc_yml[soc_name]['harts'],
     }
 

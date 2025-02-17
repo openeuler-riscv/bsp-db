@@ -1,4 +1,5 @@
 JH7110:
+  vendor: !ref { resc: starfive/vendor.yml, category: products }
   release_date: '2022'
   harts:
     - name: SiFive U74

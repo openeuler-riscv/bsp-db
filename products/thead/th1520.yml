@@ -1,4 +1,5 @@
 TH1520:
+  vendor: !ref { resc: thead/vendor.yml, category: products }
   release_date: '2022'
   harts:
     - name: Xuantie C910

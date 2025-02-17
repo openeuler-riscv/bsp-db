@@ -1,6 +1,9 @@
 __root__:
   type: dict
   schema:
+    vendor:
+      required: true
+      type: reference
     release_date:
       required: true
       type: string

@@ -13,7 +13,10 @@ def main(args: argparse.Namespace):
             'name': board_json['name'],
             'vendor': board_json['vendor']['name'],
             'thumbnail': None if len(board_json['pictures']) == 0 else board_json['pictures'][0],
-            'soc': board_json['soc']['name'],
+            'soc': {
+                'name': board_json['soc']['name'],
+                'vendor': board_json['soc']['vendor']['name']
+            },
             'isa': [],
             'kernel': [],
             'userspace': [],
