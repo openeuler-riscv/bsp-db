@@ -17,6 +17,7 @@ def main(args: argparse.Namespace):
             'isa': [],
             'kernel': [],
             'userspace': [],
+            'features': [],
             'uri': os.path.relpath(board_json_file, args.ref_root),
             'status': board_json['status'],
         }
@@ -30,6 +31,9 @@ def main(args: argparse.Namespace):
                         curr_board['kernel'].append(kernel_identifier)
                     if img['userspace'] not in curr_board['userspace']:
                         curr_board['userspace'].append(img['userspace'])
+                    for img_feature in img['features']:
+                        if img_feature not in curr_board['features']:
+                            curr_board['features'].append(img_feature)
         boardlist.append(curr_board)
     with open(args.output_file, 'w') as fp:
         json.dump(boardlist, fp, indent=2)
