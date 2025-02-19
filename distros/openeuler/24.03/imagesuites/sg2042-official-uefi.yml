@@ -2,7 +2,6 @@ official-24.03:
   belongs_to: !ref { resc: openeuler/24.03/release-info.yml, category: distros }
   compatible:
     - !ref { resc: milkv/pioneer.yml, category: products }
-    - !ref { resc: qemu/system.yml, category: products }
   kernel:
     type: RVCK
     branch: '6.6'
