@@ -25,4 +25,5 @@ sg2042-24.03.sp1:
         - firmware
       hash:
         sha256: 1d1e47ce2cbbeda528c4338030f914c4905af89fc939783e3ff80fefa935c57d
-  docs: [ ]
+  docs:
+    - !ref { resc: milkv/pioneer-oerv-linuxboot.md, category: docs }
