@@ -6,7 +6,7 @@ official-24.03:
     type: RVCK
     branch: '6.6'
     version: 6.6.0-27.0.0.31.oe2403
-  userspace: xfce4
+  userspace: Headless
   isa:
     profile: RVA20
     extensions: [ ]
