@@ -1,0 +1,34 @@
+qemu-virt-24.03:
+  belongs_to: !ref { resc: openeuler/24.03/release-info.yml, category: distros }
+  compatible:
+    - !ref { resc: qemu/system.yml, category: products }
+  kernel:
+    type: RVCK
+    branch: '6.6'
+    version: 6.6.0-27.0.0.31.oe2403
+  userspace: Headless
+  isa:
+    profile: RVA20
+    extensions: [ ]
+  type: Installer
+  features:
+    - EFI
+    - FDT
+  files:
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/virtual_machine_img/riscv64/RISCV_VIRT_CODE.fd
+      tags:
+        - firmware
+      hash:
+        sha256: 758ce83631eb93a7b19d5f2f9ac84f34f9f8854e71698e4a088920aa86f03fd5
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/virtual_machine_img/riscv64/RISCV_VIRT_VARS.fd
+      tags:
+        - firmware
+      hash:
+        sha256: cbc804cabde37783e1d04ecf5c40df35faad1dc6114678e2c2c309a14b2fa568
+    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/virtual_machine_img/riscv64/openEuler-24.03-LTS-riscv64.qcow2.xz
+      tags:
+        - system-image
+      hash:
+        sha256: aa08a2d8da3b0f3a369335be6e8bfda969e5e25dbe6ff9d76a10dd158138a509
+  docs:
+    - !ref { resc: qemu/qemu-system-fdt.md, category: docs }
