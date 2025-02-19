@@ -43,16 +43,20 @@ def main(args: argparse.Namespace):
         'files': img_yml[img_name]['files'],
         'docs': doc_urls,
     }
-    distro_release['imagesuites'].append(img_json)
     for board_ref in img_yml[img_name]['compatible']:
         board_json_file = os.path.splitext(os.path.join(args.json_tree, board_ref.category, board_ref.resc))[0] + '.json'
         with FileLock(board_json_file + ".lock", timeout=-1):
             with open(board_json_file, 'r') as fp:
                 board_json = json.load(fp)
-            if distro_name in board_json['os']:
+            if distro_name not in board_json['os']:
+                # Ensure distro exists
+                board_json['os'][distro_name] = []
+            if not any(existing_releases['name'] == distro_release['name'] for existing_releases in board_json['os'][distro_name]):
+                # Ensure distro release exists
                 board_json['os'][distro_name].append(distro_release)
-            else:
-                board_json['os'][distro_name] = [distro_release]
+            # Finally append the new imagesuite
+            next(matching_release for matching_release in board_json['os'][distro_name] if matching_release['name'] == distro_release['name'])['imagesuites'].append(img_json)
+
             with open(board_json_file, 'w') as fp:
                 json.dump(board_json, fp, indent=2)
 
