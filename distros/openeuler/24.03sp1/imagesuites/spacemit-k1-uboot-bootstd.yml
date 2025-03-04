@@ -2,6 +2,7 @@ spacemit-k1-24.03.sp1:
   belongs_to: !ref { resc: openeuler/24.03sp1/release-info.yml, category: distros }
   compatible:
     - !ref { resc: spacemit/muse_pi.yml, category: products }
+    - !ref { resc: spacemit/muse_card.yml, category: products }
   kernel:
     type: VENDOR
     branch: '6.6'
