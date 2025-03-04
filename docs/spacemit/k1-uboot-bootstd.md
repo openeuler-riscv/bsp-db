@@ -37,6 +37,12 @@ EOF
 
 ### 操作流程
 
+操作板卡的启动选择拨码开关，将第一位置 `1` ，使板卡从 SPI NOR Flash 启动：
+
+![bootsel](./k1-uboot-bootstd.resc/bootsel.webp)
+
+MUSE Card 没有该开关，默认就是从 Flash 启动。而 BPi-F3 出厂没有焊接 Flash，需要补焊一颗。
+
 将板子的 TYPE-C 口接至电脑。
 
 摁住板子上的 `FDL` 键同时短摁 `RST` 键，将开发板重启进 BootROM。
