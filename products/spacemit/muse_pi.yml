@@ -2,7 +2,7 @@ MUSE Pi:
   hw_rev:
     - V30
   vendor: !ref { resc: spacemit/vendor.yml, category: products }
-  soc: !ref { resc: spacemit/m1.yml, category: products }
+  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
   type: SBC
   status: SUPPORTED
   pictures:

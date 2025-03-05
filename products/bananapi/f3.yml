@@ -1,6 +1,6 @@
 F3:
   vendor: !ref { resc: bananapi/vendor.yml, category: products }
-  soc: !ref { resc: spacemit/k1.yml, category: products }
+  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
   type: SBC
   status: SUPPORTED
   pictures:
