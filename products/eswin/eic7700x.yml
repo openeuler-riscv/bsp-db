@@ -1,0 +1,7 @@
+EIC7700X:
+  vendor: !ref { resc: eswin/vendor.yml, category: products }
+  release_date: '2024'
+  harts:
+    - name: SiFive P550
+      nums: 4
+      freq: 1.8GHz
