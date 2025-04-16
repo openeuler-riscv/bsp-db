@@ -18,15 +18,15 @@ spacemit-k1-24.03.sp1:
     - BOOTSTD
     - FDT
   files:
-    - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250303/openEuler-24.03-LTS-SP1-base-spacemit_k1-testing.img.zst
+    - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250416/openEuler-24.03-LTS-SP1-base-spacemit_k1-testing.img.zst
       tags:
         - system-image
       hash:
-        sha256: c98dea49f196489245cbb90576058ea51f7379f923f460ad284104958006983e
-    - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250303/spacemit_k1_fw.tar.zst
+        sha256: 8046551589294a41154135f18bd021d4ced5d859ce3339fdf50f13a95dc26ef0
+    - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250416/spacemit_k1_fw.tar.zst
       tags:
         - firmware
       hash:
-        sha256: cdae052e9913ed6b49e4432f0e18b41f55fa1e791b56a3e390735e9ef33517bd
+        sha256: af311eb27a76a42f92c184941a55c08bfa471f7ba22efc4ad11b8ef785077227
   docs:
     - !ref { resc: spacemit/k1-uboot-bootstd.md, category: docs }
