@@ -1,4 +1,4 @@
-K1/M1:
+K1/M1/X1:
   vendor: !ref { resc: spacemit/vendor.yml, category: products }
   release_date: '2024'
   harts:

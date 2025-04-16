@@ -5,6 +5,7 @@ spacemit-k1-24.03.sp1:
     - !ref { resc: spacemit/muse_card.yml, category: products }
     - !ref { resc: bananapi/f3.yml, category: products }
     - !ref { resc: milkv/jupter.yml, category: products }
+    - !ref { resc: orangepi/rv2.yml, category: products }
   kernel:
     type: VENDOR
     branch: '6.6'
