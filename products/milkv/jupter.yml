@@ -1,0 +1,56 @@
+Jupter:
+  vendor: !ref { resc: milkv/vendor.yml, category: products }
+  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
+  type: mATX
+  status: SUPPORTED
+  pictures:
+    - !ref { resc: milkv/jupter/jupter-view.webp, category: resources }
+  hw_features:
+    ram:
+      type: LPDDR4X
+      rate: 4266MT
+      width: 32
+      capacity:
+        - 4GB
+        - 8GB
+        - 16GB
+    storage:
+      - type: NOR Flash
+        capacity:
+          - 8MB
+      - type: eMMC
+        revision: '5.1'
+        capacity:
+          - NC
+      - type: microSD
+        revision: SDXC 3.0
+      - type: M.2
+        revision: M-Key, PCIe2.0x2
+        nums: 1
+    connectivity:
+      - type: PCIe x8
+        revision: PCIe2.1x2
+        nums: 1
+      - type: USB-A
+        revision: '3.0'
+        nums: 1
+      - type: USB-A
+        revision: '2.0'
+        nums: 1
+      - type: USB-C
+        revision: 2.0 OTG
+        nums: 1
+      - type: Ethernet
+        revision: 1GbE
+        nums: 2
+      - type: F_PANEL USB
+        revision: '3.0'
+        nums: 2
+      - type: F_PANEL USB
+        revision: '2.0'
+        nums: 2
+      - type: HDMI
+        revision: '2.0'
+        nums: 1
+      - type: 3.5mm Jack
+        revision: 4-rings
