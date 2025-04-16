@@ -14,6 +14,7 @@
 
 下载文件列表中提供的 `spacemit_k1_fw.tar.zst` ，解压得到下列固件文件：
 
+- `partition.json`
 - `bootinfo_spinor.bin`
 - `FSBL.bin`
 - `fw_dynamic.itb`
@@ -55,7 +56,8 @@ fastboot continue
 sleep 1
 fastboot stage u-boot.itb
 fastboot continue
-
+sleep 1
+fastboot flash mtd partition.json
 fastboot flash mtd-bootinfo bootinfo_spinor.bin
 fastboot flash mtd-fsbl FSBL.bin
 fastboot flash mtd-opensbi fw_dynamic.itb
