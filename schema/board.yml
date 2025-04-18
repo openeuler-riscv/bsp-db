@@ -23,7 +23,7 @@ __root__:
         - ITX
         - ATX
         - mATX
-        - miniPC
+        - Mini-ITX
         - Server
         - Emulated
     pictures:

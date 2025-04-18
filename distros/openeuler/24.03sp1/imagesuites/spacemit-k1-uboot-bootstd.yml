@@ -6,6 +6,7 @@ spacemit-k1-24.03.sp1:
     - !ref { resc: bananapi/f3.yml, category: products }
     - !ref { resc: milkv/jupter.yml, category: products }
     - !ref { resc: orangepi/rv2.yml, category: products }
+    - !ref { resc: spacemit/muse_box.yml, category: products }
   kernel:
     type: VENDOR
     branch: '6.6'
@@ -25,10 +26,10 @@ spacemit-k1-24.03.sp1:
         - system-image
       hash:
         sha256: 8046551589294a41154135f18bd021d4ced5d859ce3339fdf50f13a95dc26ef0
-    - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250416/spacemit_k1_fw.tar.zst
+    - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250418/spacemit_k1_fw.tar.zst
       tags:
         - firmware
       hash:
-        sha256: af311eb27a76a42f92c184941a55c08bfa471f7ba22efc4ad11b8ef785077227
+        sha256: 3e01d75907f12f2eab9fb0a91cbf762b1884c85762f3bf10cc00d6a9a4bcf1ce
   docs:
     - !ref { resc: spacemit/k1-uboot-bootstd.md, category: docs }
