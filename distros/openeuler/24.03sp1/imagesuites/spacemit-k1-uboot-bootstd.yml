@@ -7,6 +7,7 @@ spacemit-k1-24.03.sp1:
     - !ref { resc: milkv/jupter.yml, category: products }
     - !ref { resc: orangepi/rv2.yml, category: products }
     - !ref { resc: spacemit/muse_box.yml, category: products }
+    - !ref { resc: spacemit/muse_pi_pro.yml, category: products }
   kernel:
     type: VENDOR
     branch: '6.6'
