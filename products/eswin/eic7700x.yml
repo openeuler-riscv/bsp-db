@@ -1,5 +1,5 @@
 EIC7700X:
-  vendor: !ref { resc: eswin/vendor.yml, category: products }
+  vendor: !fref vendor.yml
   release_date: '2024'
   harts:
     - name: SiFive P550

@@ -1,12 +1,12 @@
 Pioneer:
-  vendor: !ref { resc: milkv/vendor.yml, category: products }
-  soc: !ref { resc: sophgo/sg2042.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref ../sophgo/sg2042.yml
   type: mATX
   status: SUPPORTED
   pictures:
-    - !ref { resc: milkv/pioneer/milk-v-pioneer-board_png_gallery-lg.jpg, category: resources }
-    - !ref { resc: milkv/pioneer/milk-v-box-angle_png_gallery-lg.jpg, category: resources }
-  hw_features:
+    - !fref /gallery/milkv/pioneer/milk-v-pioneer-board_png_gallery-lg.jpg
+    - !fref /gallery/milkv/pioneer/milk-v-box-angle_png_gallery-lg.jpg
+  hw_info:
     ram:
       type: DDR4 DIMM x4
       capacity: [NC]
@@ -41,3 +41,4 @@ Pioneer:
         revision: 4-lanes
       - type: MIPI-DSI
         revision: 4-lanes
+    peripheral: []

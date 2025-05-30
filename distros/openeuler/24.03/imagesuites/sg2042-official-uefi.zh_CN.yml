@@ -1,0 +1,37 @@
+- name: 统一ISO安装镜像
+  userspace: !fref ../release-info.zh_CN.yml
+  kernel:
+    type: OLK
+    version: '6.6'
+    src: 'https://github.com/RVCK-Project/rvck-olk/tree/OLK-6.6'
+  isa:
+    march: !!set
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - UEFI
+  flavor: 安装器
+  _compatible_:
+    - &pioneer !fref /products/milkv/pioneer.zh_CN.yml
+  revisions:
+    - date: 2024-06-06
+      status: 发布版
+      compatible: [ *pioneer ]
+      changelog: |
+        none
+      files:
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/SG2042/sg2042_firmware_uefi.img.zip
+          tags:
+            - firmware
+            - milkv/pioneer
+          hash:
+            sha256: d7a936304bc01dfb8ccb47dc6df6527aecba4886940313355f68283dbc32fdf5
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/ISO/riscv64/openEuler-24.03-LTS-riscv64-dvd.iso
+          tags:
+            - os-installer
+          hash:
+            sha256: f49a5da648c53af30aa1a5bcc784685d75baca08743c840889bff32655b6a4e1
+      docs:
+        - !fref /docs/milkv/pioneer-oerv2403-uefi.md

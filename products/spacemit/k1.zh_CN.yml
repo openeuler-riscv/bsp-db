@@ -1,6 +1,9 @@
-K1/M1/X1:
-  vendor: !ref { resc: spacemit/vendor.yml, category: products }
+Key Stone K1:
+  vendor: !fref vendor.zh_CN.yml
   release_date: '2024'
+  variants:
+    - K1
+    - M1
   harts:
     - name: SpacemiT X60
       nums: 8

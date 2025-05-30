@@ -1,7 +1,7 @@
 qemu-system:
-  vendor: !ref { resc: qemu/vendor.yml, category: products }
-  soc: !ref { resc: qemu/virt.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref virt.yml
   type: Emulated
   status: SUPPORTED
   pictures:
-    - !ref { resc: qemu/Qemu_logo.svg, category: resources }
+    - !fref /gallery/qemu/Qemu_logo.svg

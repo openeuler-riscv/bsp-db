@@ -1,5 +1,5 @@
 SG2042:
-  vendor: !ref { resc: sophgo/vendor.yml, category: products }
+  vendor: !fref vendor.yml
   release_date: '2023'
   harts:
     - name: XuanTie C920

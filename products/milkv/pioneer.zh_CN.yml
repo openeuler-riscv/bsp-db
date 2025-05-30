@@ -1,0 +1,44 @@
+Pioneer:
+  vendor: !fref vendor.zh_CN.yml
+  soc: !fref ../sophgo/sg2042.zh_CN.yml
+  type: mATX
+  status: SUPPORTED
+  pictures:
+    - !fref /gallery/milkv/pioneer/milk-v-pioneer-board_png_gallery-lg.jpg
+    - !fref /gallery/milkv/pioneer/milk-v-box-angle_png_gallery-lg.jpg
+  hw_info:
+    ram:
+      type: DDR4 DIMM x4
+      capacity: [NC]
+    storage:
+      - type: NOR Flash
+        capacity:
+          - NC
+      - type: eMMC
+        capacity:
+          - NC
+      - type: microSD
+        revision: SDXC 3.0
+      - type: M.2
+        revision: M-Key, PCIe3.0x4
+        nums: 2
+      - type: SATA
+        revision: 3.0@6Gbps
+        nums: 5
+    connectivity:
+      - type: USB-A
+        revision: '3.0'
+        nums: 8
+      - type: Ethernet
+        revision: 2.5GbE
+        nums: 2
+      - type: HDMI
+        revision: '2.0'
+      - type: MIPI-CSI
+        revision: 2-lanes
+        nums: 2
+      - type: MIPI-CSI
+        revision: 4-lanes
+      - type: MIPI-DSI
+        revision: 4-lanes
+    peripheral: []

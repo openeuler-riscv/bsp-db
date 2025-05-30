@@ -1,0 +1,7 @@
+SG2042:
+  vendor: !fref vendor.zh_CN.yml
+  release_date: '2023'
+  harts:
+    - name: XuanTie C920
+      nums: 64
+      freq: 2GHz

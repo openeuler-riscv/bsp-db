@@ -1,0 +1,7 @@
+TH1520:
+  vendor: !fref vendor.zh_CN.yml
+  release_date: '2022'
+  harts:
+    - name: Xuantie C910
+      nums: 4
+      freq: 2.5GHz

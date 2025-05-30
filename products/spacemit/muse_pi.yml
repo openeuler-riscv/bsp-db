@@ -1,14 +1,14 @@
 MUSE Pi:
   hw_rev:
     - V30
-  vendor: !ref { resc: spacemit/vendor.yml, category: products }
-  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref k1.yml
   type: SBC
   status: SUPPORTED
   pictures:
-    - !ref { resc: spacemit/muse-pi/musepi_front.webp, category: resources }
-    - !ref { resc: spacemit/muse-pi/musepi_back.webp, category: resources }
-  hw_features:
+    - !fref /gallery/spacemit/muse-pi/musepi_front.webp
+    - !fref /gallery/spacemit/muse-pi/musepi_back.webp
+  hw_info:
     ram:
       type: LPDDR4X
       rate: 2666MT
@@ -53,3 +53,4 @@ MUSE Pi:
         nums: 2
       - type: MIPI-DSI
         revision: 4-lanes
+    peripheral: []

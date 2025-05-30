@@ -1,11 +1,11 @@
 Jupter:
-  vendor: !ref { resc: milkv/vendor.yml, category: products }
-  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref ../spacemit/k1.yml
   type: mATX
   status: SUPPORTED
   pictures:
-    - !ref { resc: milkv/jupter/jupter-view.webp, category: resources }
-  hw_features:
+    - !fref /gallery/milkv/jupter/jupter-view.webp
+  hw_info:
     ram:
       type: LPDDR4X
       rate: 4266MT
@@ -54,3 +54,4 @@ Jupter:
         nums: 1
       - type: 3.5mm Jack
         revision: 4-rings
+    peripheral: []

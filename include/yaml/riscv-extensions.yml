@@ -1,0 +1,183 @@
+extension:
+dependency:
+  D: !!set
+    ? F
+  F: !!set
+    ? Zicsr
+extension_group:
+  G: &G !!set
+    ? I
+    ? M
+    ? A
+    ? F
+    ? D
+    ? Zicsr
+    ? Zifencei
+  Sha: &Sha !!set
+    ? H
+    ? Ssstateen
+    ? Shcounterenw
+    ? Shvstvala
+    ? Shtvala
+    ? Shvstvecd
+    ? Shvsatpa
+    ? Shgatpa
+  B: &B !!set
+    ? Zba
+    ? Zbb
+    ? Zbs
+profile:
+  RVI20:
+    U64:
+      base_isa: RV64I
+      mandatory: !!set
+      optional: !!set
+        ? M
+        ? A
+        ? F
+        ? D
+        ? C
+        ? Zifencei
+        ? Zicntr
+        ? Zihpm
+  RVA20:
+    U64:
+      base_isa: RV64I
+      mandatory: &RVA20U64M !!set
+        ? M
+        ? A
+        ? F
+        ? D
+        ? C
+        ? Zicsr
+        ? Zicntr
+        ? Ziccif
+        ? Ziccrse
+        ? Ziccamoa
+        ? Za128rs
+        ? Zicclsm
+      optional: !!set
+        ? Zihpm
+    S64:
+      base_isa: RV64I
+      mandatory: !!set
+        <<: *RVA20U64M
+        ? Zifencei
+        ? Ss1p11
+        ? Svbare
+        ? Sv39
+        ? Svade
+        ? Ssccptr
+        ? Sstvecd
+        ? Sstvala
+      optional: !!set
+        ? Zihpm
+        ? Sv48
+        ? Ssu64xl
+  RVA22:
+    U64:
+      base_isa: RV64I
+      mandatory: &RVA22U64M !!set
+        <<: *RVA20U64M
+        <<: *B
+        ? Za64rs
+        ? Zihpm
+        ? Zihintpause
+        ? Zic64b
+        ? Zicbom
+        ? Zicbop
+        ? Zicboz
+        ? Zfhmin
+        ? Zkt
+      optional: !!set
+        ? Zfh
+        ? V
+        ? Zkn
+        ? Zks
+    S64:
+      base_isa: RV64I
+      mandatory: !!set
+        <<: *RVA22U64M
+        ? Zifencei
+        ? Ss1p12
+        ? Svbare
+        ? Sv39
+        ? Svade
+        ? Ssccptr
+        ? Sstvecd
+        ? Sstvala
+        ? Sscounterenw
+        ? Svpbmt
+        ? Svinval
+      optional: !!set
+        ? Sv48
+        ? Sv57
+        ? Svnapot
+        ? Ssu64xl
+        ? Sstc
+        ? Sscofpmf
+        ? Zkr
+        <<: *Sha
+  RVA23:
+    U64:
+      base_isa: RV64I
+      mandatory: &RVA23U64M !!set
+        <<: *RVA22U64M
+        ? V
+        ? Zvfhmin
+        ? Zvbb
+        ? Zvkt
+        ? Zihintntl
+        ? Zicond
+        ? Zimop
+        ? Zcmop
+        ? Zcb
+        ? Zfa
+        ? Zawrs
+        ? Supm
+      optional: !!set
+        ? Zvkng
+        ? Zvksg
+        ? Zabha
+        ? Zacas
+        ? Ziccamoc
+        ? Zvbc
+        ? Zama16b
+        ? Zfh
+        ? Zbc
+        ? Zicfilp
+        ? Zicfiss
+        ? Zvfh
+        ? Zfbfmin
+        ? Zvfbfmin
+        ? Zvfbfwma
+    S64:
+      base_isa: RV64I
+      mandatory: !!set
+        <<: *RVA23U64M
+        ? Zifencei
+        ? Ss1p13
+        ? Svbare
+        ? Sv39
+        ? Svade
+        ? Ssccptr
+        ? Sstvecd
+        ? Sstvala
+        ? Sscounterenw
+        ? Svpbmt
+        ? Svinval
+        ? Svnapot
+        ? Sstc
+        ? Sscofpmf
+        ? Ssnpm
+        ? Ssu64xl
+        <<: *Sha
+      optional: !!set
+        ? Sv48
+        ? Sv57
+        ? Zkr
+        ? Svadu
+        ? Sdtrig
+        ? Ssstrict
+        ? Svvptc
+        ? Sspm

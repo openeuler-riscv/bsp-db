@@ -1,0 +1,166 @@
+__root__:
+  # __root__ is a helper node for specifing top level schema
+  # The type of its value can be specified as well
+  type: list
+  schema:
+    type: dict
+    schema:
+      name:
+        required: true
+        type: string
+      userspace:
+        # Distro as well as the versioned release
+        required: true
+        type: file_reference
+        check_with: file_exist
+      kernel:
+        # Kernel can be assembled separately from distro userspace
+        required: true
+        type: dict
+        schema:
+          type:
+            # Indicates the maintainer of the kernel
+            required: true
+            type: string
+            oneof_regex:
+              - ^OLK$
+              - ^RVCK$
+              - ^主线$
+              - ^厂商$
+              - ^社区$
+          version:
+            # X.Y stable release
+            required: true
+            type: string
+            regex: '^[\d]+.[\d]+$'
+          src:
+            # URL to the related repo
+            required: false
+            type: string
+      isa:
+        # HART ISA baseline for the image to work properly
+        required: true
+        type: dict
+        schema:
+          march:
+            required: true
+            type: set
+            # TODO: vaidate items in set (currently not supported)
+          mabi:
+            required: true
+            type: string
+            oneof_regex:
+             - lp64d
+      loader:
+        # Compatible bootloader protocol
+        required: true
+        type: list
+        schema:
+          type: string
+          oneof_regex:
+            - ^UEFI$
+            - ^DistroBoot$
+            - ^无$
+      flavor:
+        # Mostly determined by the pre-installed packages
+        required: true
+        type: string
+        oneof_regex:
+          - ^安装器$
+          - ^无桌面镜像$
+          - ^Xfce4镜像$
+          - ^Gnome镜像$
+          - ^DevStation镜像$
+      _compatible_:
+        # Placeholder for reference shortcuts
+        required: false
+        type: list
+        schema:
+          type: file_reference
+          check_with: file_exist
+      revisions:
+        required: true
+        type: list
+        schema:
+          type: dict
+          schema:
+            date:
+              required: true
+              type: date
+            status:
+              required: true
+              type: string
+              oneof_regex:
+                - ^发布版$
+                - ^测试版$
+                - ^预览版$
+            compatible:
+              required: true
+              type: list
+              schema:
+                type: file_reference
+                check_with: file_exist
+            changelog:
+              # Write something mindful
+              required: true
+              type: string
+            regressions:
+              # Filled if any bug is found
+              required: false
+              type: string
+            files:
+              required: true
+              type: list
+              schema:
+                type: dict
+                schema:
+                  url:
+                    required: true
+                    type: string
+                    regex: ^(?P<protocol>[\w]+):\/\/(?:(?P<username>[\w]+)(?:\:(?P<password>.+))?@)?(?:(?P<hostname>[\w\.\-]+)(?:\:(?P<port>[\d]+))?)?(?P<path>[\w\/\.\-]*)(?:\?(?P<parameters>[\w\=\-\.\/\&\_\%\+]+))?(?:#(?P<hash>[^\s]+))?$
+                  hash:
+                    required: true
+                    type: dict
+                    nullable: false
+                    schema:
+                      sha128:
+                        required: false
+                        type: string
+                        regex: ^[0-9a-f]{32}$
+                      sha256:
+                        required: false
+                        type: string
+                        regex: ^[0-9a-f]{64}$
+                      sha512:
+                        required: false
+                        type: string
+                        regex: ^[0-9a-f]{128}$
+                  tags:
+                    required: false
+                    type: list
+                    schema:
+                      type: string
+                  exclusive: &exclusive
+                    # If this field is specified then only the boards listed here is compatible.
+                    # Otherwise the compatible list from current revision will apply.
+                    # Useful if multiple boards share the same kernel but different bootloaders.
+                    # The values listed here must be those from current revision
+                    required: false
+                    type: list
+                    schema:
+                      type: file_reference
+                      check_with: file_exist
+            docs:
+              required: true
+              type: list
+              schema:
+                oneof:
+                  - type: file_reference
+                    check_with: file_exist
+                  - type: dict
+                    schema:
+                      file:
+                        required: true
+                        type: file_reference
+                        check_with: file_exist
+                      exclusive: *exclusive

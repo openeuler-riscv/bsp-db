@@ -1,11 +1,11 @@
 Megrez:
-  vendor: !ref { resc: milkv/vendor.yml, category: products }
-  soc: !ref { resc: eswin/eic7700x.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref ../eswin/eic7700x.yml
   type: mATX
   status: WIP
   pictures:
-    - !ref { resc: milkv/megrez/megrez-view.webp, category: resources }
-  hw_features:
+    - !fref /gallery/milkv/megrez/megrez-view.webp
+  hw_info:
     ram:
       type: LPDDR5
       rate: 6400MT
@@ -49,3 +49,4 @@ Megrez:
       - type: HDMI
         revision: '2.0'
         nums: 1
+    peripheral: []

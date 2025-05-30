@@ -1,0 +1,46 @@
+- name: 无桌面镜像
+  userspace: !fref ../release-info.zh_CN.yml
+  kernel:
+    type: OLK
+    version: '6.6'
+    src: 'https://github.com/RVCK-Project/rvck-olk/tree/OLK-6.6'
+  isa:
+    march: !!set
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - 无
+  flavor: 无桌面镜像
+  _compatible_:
+    - &lpi4a !fref /products/sipeed/licheepi_4a.zh_CN.yml
+  revisions:
+    - date: 2025-01-02
+      status: 发布版
+      compatible: [ *lpi4a ]
+      changelog: |
+        none
+      files:
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS-SP1/embedded_img/riscv64/lpi4a/openEuler-24.03-LTS-SP1-riscv64-lpi4a-base-boot.ext4.zst
+          tags:
+            - boot-image
+          hash:
+            sha256: d6c2b735b4df5f5e33423ee41a739e9442118aaa0f0b83791d83b7017cb95ab8
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS-SP1/embedded_img/riscv64/lpi4a/openEuler-24.03-LTS-SP1-riscv64-lpi4a-base-root.ext4.zst
+          tags:
+            - system-image
+          hash:
+            sha256: fda5174503f4f5323c56575d651f4e14296f44683483cf6c887c0fce0f75b9f6
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS-SP1/embedded_img/riscv64/lpi4a/u-boot-with-spl-lpi4a-16g.bin
+          tags:
+            - firmware
+          hash:
+            sha256: 39b05820158b04269b5ad4f704ba5610c5caed3e7496a25834a3304af2a1ba9c
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS-SP1/embedded_img/riscv64/lpi4a/u-boot-with-spl-lpi4a.bin
+          tags:
+            - firmware
+          hash:
+            sha256: b2732a56f2b5d5e642804e94a55754b6b6dae54d02ac5ca4249d1df59931e391
+      docs:
+        - !fref /docs/sipeed/lpi4a-uboot-official-image.md

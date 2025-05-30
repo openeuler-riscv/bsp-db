@@ -1,0 +1,36 @@
+- name: 无桌面镜像
+  userspace: !fref ../release-info.zh_CN.yml
+  kernel:
+    type: OLK
+    version: '6.6'
+    src: 'https://github.com/RVCK-Project/rvck-olk/tree/OLK-6.6'
+  isa:
+    march: !!set
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - 无
+  flavor: 无桌面镜像
+  _compatible_:
+    - &pioneer !fref /products/milkv/pioneer.zh_CN.yml
+  revisions:
+    - date: 2024-06-06
+      status: 发布版
+      compatible: [ *pioneer ]
+      changelog: |
+        none
+      files:
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/SG2042/openEuler-24.03-LTS-riscv64-sg2042.img.zip
+          tags:
+            - system-image
+          hash:
+            sha256: 9d23fbad04ebdccb216991995963f8021674d7c9f3a5b6f222f35da82244e228
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/SG2042/sg2042_firmware_linuxboot.img.zip
+          tags:
+            - firmware
+          hash:
+            sha256: 1d1e47ce2cbbeda528c4338030f914c4905af89fc939783e3ff80fefa935c57d
+      docs:
+        - !fref /docs/milkv/pioneer-oerv-linuxboot.md

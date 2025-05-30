@@ -1,5 +1,7 @@
 __root__:
   type: dict
   schema:
+    name:
+      type: string
     homepage:
       type: string

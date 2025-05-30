@@ -1,0 +1,7 @@
+X1:
+  vendor: !fref vendor.yml
+  release_date: '2025'
+  harts:
+    - name: SpacemiT X60
+      nums: 8
+      freq: 1.6GHz

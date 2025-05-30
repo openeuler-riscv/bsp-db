@@ -1,11 +1,11 @@
 VisionFive 2:
-  vendor: !ref { resc: starfive/vendor.yml, category: products }
-  soc: !ref { resc: starfive/jh7110.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref jh7110.yml
   type: SBC
   status: WIP
   pictures:
-    - !ref { resc: starfive/vf2/vf2.jpg, category: resources }
-  hw_features:
+    - !fref /gallery/starfive/vf2/vf2.jpg
+  hw_info:
     ram:
       type: LPDDR4
       width: 32
@@ -48,3 +48,4 @@ VisionFive 2:
         nums: 1
       - type: 3.5mm Jack
         revision: 4-rings
+    peripheral: []

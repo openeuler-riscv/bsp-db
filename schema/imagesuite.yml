@@ -1,111 +1,165 @@
 __root__:
-  type: dict
+  # __root__ is a helper node for specifing top level schema
+  # The type of its value can be specified as well
+  type: list
   schema:
-    belongs_to:
-      # Each image suite is built on top of exactly one distribution release.
-      required: true
-      type: reference
-    compatible:
-      # This image suite may be applicable to multiple boards.
-      required: true
-      type: list
-      schema:
-        type: reference
-    kernel:
-      # Multiple kernel options may be available to a single distribution release.
-      # But a single image suite must only ship one of those kernels.
-      required: true
-      type: dict
-      schema:
-        type:
-          required: true
-          type: string
-          oneof_regex:
-            - OLK
-            - RVCK
-            - UPSTREAM
-            - VENDOR
-            - UNKNOWN
-        branch:
-          # Upstream kernel tag that the shipped kernel is built on top of.
-          # This is a filter key.
-          required: true
-          type: string
-          regex: '^[\d]+.[\d]+$'
-        version:
-          required: true
-          type: string
-          regex: '[a-zA-Z0-9-.]+'
-    userspace:
-      # Key feature of userspace components
-      # This is a filter key.
-      required: true
-      type: string
-      oneof_regex:
-        - Headless
-        - xfce4
-    isa:
-      # Userspace ISA configuration
-      required: true
-      type: dict
-      schema:
-        profile:
-          # This is a filter key.
-          required: true
-          type: string
-          oneof_regex:
-            - RVA20
-            - RVA22
-            - RVA23
-        extensions:
-          required: false
-          type: list
-          schema:
-            type: string
-    type:
-      required: true
-      type: string
-      oneof_regex:
-        - Installer
-        - RawDiskImage
-    features:
-      required: true
-      type: list
-      anyof_regex:
-        - EFI
-        - BOOTSTD
-        - LINUXBOOT
-        - UBOOT
-        - ACPI
-        - FDT
-    files:
-      required: true
-      type: list
-      schema:
+    type: dict
+    schema:
+      name:
+        required: true
+        type: string
+      userspace:
+        # Distro as well as the versioned release
+        required: true
+        type: file_reference
+        check_with: file_exist
+      kernel:
+        # Kernel can be assembled separately from distro userspace
+        required: true
         type: dict
         schema:
-          url:
+          type:
+            # Indicates the maintainer of the kernel
             required: true
             type: string
-            regex: &url_matching
-                '[a-zA-Z0-9:\/\-_.]+'
-          tags:
-            # File-specific tags, such as system-image/firmware/tools
+            oneof_regex:
+              - ^OLK$
+              - ^RVCK$
+              - ^Mainline$
+              - ^Vendor$
+              - ^Community$
+          version:
+            # X.Y stable release
+            required: true
+            type: string
+            regex: '^[\d]+.[\d]+$'
+          src:
+            # URL to the related repo
             required: false
-            type: list
-            schema:
-              type: string
-          hash:
-            required: false
-            type: dict
-            keysrules:
+            type: string
+      isa:
+        # HART ISA baseline for the image to work properly
+        required: true
+        type: dict
+        schema:
+          march:
+            required: true
+            type: set
+            # TODO: vaidate items in set (currently not supported)
+          mabi:
+            required: true
+            type: string
+            oneof_regex:
+             - lp64d
+      loader:
+        # Compatible bootloader protocol
+        required: true
+        type: list
+        schema:
+          type: string
+          oneof_regex:
+            - ^UEFI$
+            - ^DistroBoot$
+            - ^none$
+      flavor:
+        # Mostly determined by the pre-installed packages
+        required: true
+        type: string
+        oneof_regex:
+          - ^Installer$
+          - ^Headless$
+          - ^Xfce4$
+          - ^Gnome$
+          - ^DevStation$
+      _compatible_:
+        # Placeholder for reference shortcuts
+        required: false
+        type: list
+        schema:
+          type: file_reference
+          check_with: file_exist
+      revisions:
+        required: true
+        type: list
+        schema:
+          type: dict
+          schema:
+            date:
+              required: true
+              type: date
+            status:
+              required: true
               type: string
               oneof_regex:
-                - sha256
-            valuesrules:
+                - ^Released$
+                - ^Testing$
+                - ^Previewing$
+            compatible:
+              required: true
+              type: list
+              schema:
+                type: file_reference
+                check_with: file_exist
+            changelog:
+              # Write something mindful
+              required: true
               type: string
-    docs:
-      required: false
-      type: list
-      schema:
-        type: reference
+            regressions:
+              # Filled if any bug is found
+              required: false
+              type: string
+            files:
+              required: true
+              type: list
+              schema:
+                type: dict
+                schema:
+                  url:
+                    required: true
+                    type: string
+                    regex: ^(?P<protocol>[\w]+):\/\/(?:(?P<username>[\w]+)(?:\:(?P<password>.+))?@)?(?:(?P<hostname>[\w\.\-]+)(?:\:(?P<port>[\d]+))?)?(?P<path>[\w\/\.\-]*)(?:\?(?P<parameters>[\w\=\-\.\/\&\_\%\+]+))?(?:#(?P<hash>[^\s]+))?$
+                  hash:
+                    required: true
+                    type: dict
+                    nullable: false
+                    schema:
+                      sha128:
+                        required: false
+                        type: string
+                        regex: ^[0-9a-f]{32}$
+                      sha256:
+                        required: false
+                        type: string
+                        regex: ^[0-9a-f]{64}$
+                      sha512:
+                        required: false
+                        type: string
+                        regex: ^[0-9a-f]{128}$
+                  tags:
+                    required: false
+                    type: list
+                    schema:
+                      type: string
+                  exclusive: &exclusive
+                    # If this field is specified then only the boards listed here is compatible.
+                    # Otherwise the compatible list from current release will apply.
+                    # Useful if multiple boards share the same kernel but different bootloaders.
+                    required: false
+                    type: list
+                    schema:
+                      type: file_reference
+                      check_with: file_exist
+            docs:
+              required: true
+              type: list
+              schema:
+                oneof:
+                  - type: file_reference
+                    check_with: file_exist
+                  - type: dict
+                    schema:
+                      file:
+                        required: true
+                        type: file_reference
+                        check_with: file_exist
+                      exclusive: *exclusive

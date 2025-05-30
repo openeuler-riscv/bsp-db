@@ -1,11 +1,11 @@
 LicheePi 4A:
-  vendor: !ref { resc: sipeed/vendor.yml, category: products }
-  soc: !ref { resc: thead/th1520.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref ../xuantie/th1520.yml
   type: SoM+Carrier
   status: SUPPORTED
   pictures:
-    - !ref { resc: sipeed/lpi4a/lpi4a.png, category: resources }
-  hw_features:
+    - !fref /gallery/sipeed/lpi4a/lpi4a.png
+  hw_info:
     ram:
       type: LPDDR4X
       rate: 3733MT
@@ -49,3 +49,4 @@ LicheePi 4A:
         revision: 4-lanes
       - type: MIPI-DSI
         revision: 4-lanes
+    peripheral: []

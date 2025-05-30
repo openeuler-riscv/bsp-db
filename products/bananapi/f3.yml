@@ -1,11 +1,11 @@
 F3:
-  vendor: !ref { resc: bananapi/vendor.yml, category: products }
-  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref ../spacemit/k1.yml
   type: SBC
   status: SUPPORTED
   pictures:
-    - !ref { resc: bananapi/f3/f3-official.jpg, category: resources }
-  hw_features:
+    - !fref /gallery/bananapi/f3/f3-official.jpg
+  hw_info:
     ram:
       type: LPDDR4X
       rate: 2666MT
@@ -56,3 +56,4 @@ F3:
         revision: 4-lanes
         nums: 1
       - type: USIM
+    peripheral: []

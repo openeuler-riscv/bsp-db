@@ -1,0 +1,44 @@
+- name: 无桌面镜像
+  userspace: !fref ../release-info.zh_CN.yml
+  kernel:
+    type: 厂商
+    version: '6.6'
+    src: 'https://gitee.com/src-oerv/kernel-3rd/tree/vendor-6.6-spacemit-k1/'
+  isa:
+    march: !!set
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - DistroBoot
+  flavor: 无桌面镜像
+  _compatible_:
+    - &musepi !fref /products/spacemit/muse_pi.zh_CN.yml
+    - &musecard !fref /products/spacemit/muse_card.zh_CN.yml
+    - &bpif3 !fref /products/bananapi/f3.zh_CN.yml
+    - &jupter !fref /products/milkv/jupter.zh_CN.yml
+    - &rv2 !fref /products/orangepi/rv2.zh_CN.yml
+    - &musebox !fref /products/spacemit/muse_box.zh_CN.yml
+    - &musepipro !fref /products/spacemit/muse_pi_pro.zh_CN.yml
+  revisions:
+    - date: 2025-04-21
+      status: 发布版
+      compatible: [*musepi, *musecard, *bpif3, *jupter, *musebox, *musepipro ]
+      changelog: |
+        无
+      regressions: |
+        kernel: 由于内核设备树描述未适配新版本 esos.elf 导致 RV2 无法启动。
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250421/openEuler-24.03-LTS-SP1-base-spacemit_k1-testing.img.zst
+          tags:
+            - 系统
+          hash:
+            sha256: a2fc71010758cc4bf6cf8112395c8236b9b15575aa5fb8dd92a5f7fda5e74fe8
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250421/spacemit_k1_fw.tar.zst
+          tags:
+            - 固件
+          hash:
+            sha256: 6c94fe2d98570806137cc2f78f58729250b6321a1db8b390a047b0171e3fa155
+      docs:
+        - file: !fref /docs/spacemit/k1-uboot-bootstd.md

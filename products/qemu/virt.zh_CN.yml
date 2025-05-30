@@ -1,0 +1,4 @@
+virt:
+  vendor: !fref vendor.zh_CN.yml
+  release_date: '19970101'
+  harts: []

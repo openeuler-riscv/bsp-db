@@ -1,0 +1,59 @@
+F3:
+  vendor: !fref vendor.zh_CN.yml
+  soc: !fref ../spacemit/k1.zh_CN.yml
+  type: SBC
+  status: SUPPORTED
+  pictures:
+    - !fref /gallery/bananapi/f3/f3-official.jpg
+  hw_info:
+    ram:
+      type: LPDDR4X
+      rate: 2666MT
+      width: 32
+      capacity:
+        - 2GB
+        - 4GB
+        - 8GB
+        - 16GB
+    storage:
+      - type: NOR Flash
+        capacity:
+          - NC
+      - type: microSD
+        revision: SDXC 3.0
+      - type: eMMC
+        revision: '5.1'
+        capacity:
+          - 8GB
+          - 16GB
+          - 32GB
+          - 128GB
+      - type: M.2
+        revision: M-Key, PCIe2.0x2
+        nums: 1
+    connectivity:
+      - type: mPCIe
+        revision: PCIe2.0x1
+      - type: USB-A
+        revision: '3.0'
+        nums: 4
+      - type: USB-C
+        revision: 2.0 OTG
+        nums: 1
+      - type: Ethernet
+        revision: 1GbE
+        nums: 2
+      - type: WiFi
+        revision: 802.11 a/b/g/n/ac/ax
+      - type: Bluetooth
+        revision: '4.2'
+      - type: HDMI
+        revision: '1.4'
+      - type: MIPI-CSI
+        revision: 4-lanes
+        nums: 2
+      - type: MIPI-DSI
+        revision: 4-lanes
+        nums: 1
+      - type: USIM
+    peripheral: []

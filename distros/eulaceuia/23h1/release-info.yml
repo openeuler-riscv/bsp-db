@@ -1,3 +1,3 @@
-23H1:
-  belongs_to: !ref { resc: eulaceuia/distro.yml, category: distros }
-  release_date: '2023'
+name: 23H1
+belongs_to: !fref ../distro.yml
+release_date: '2023'

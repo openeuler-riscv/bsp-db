@@ -9,34 +9,23 @@ def main(args: argparse.Namespace):
     for board_json_file in args.input_files:
         with open(board_json_file, 'r') as fp:
             board_json = json.load(fp)
-        curr_board = {
-            'name': board_json['name'],
-            'vendor': board_json['vendor']['name'],
-            'thumbnail': None if len(board_json['pictures']) == 0 else board_json['pictures'][0],
-            'soc': {
-                'name': board_json['soc']['name'],
-                'vendor': board_json['soc']['vendor']['name']
-            },
-            'isa': [],
-            'kernel': [],
-            'userspace': [],
-            'features': [],
-            'uri': os.path.relpath(board_json_file, args.ref_root),
-            'status': board_json['status'],
+
+        curr_board = {}
+        curr_board["name"] = board_json["name"]
+        curr_board["vendor"] = board_json["vendor"]["name"]
+        curr_board["soc"] = {
+            "name": board_json["soc"]["name"],
+            "vendor": board_json["soc"]["vendor"]["name"],
         }
-        for dists in board_json['os'].values():
-            for os_rels in dists:
-                for img in os_rels['imagesuites']:
-                    if img['isa']['profile'] not in curr_board['isa']:
-                        curr_board['isa'].append(img['isa']['profile'])
-                    kernel_identifier = img['kernel']['type'] + '-' + img['kernel']['branch']
-                    if kernel_identifier not in curr_board['kernel']:
-                        curr_board['kernel'].append(kernel_identifier)
-                    if img['userspace'] not in curr_board['userspace']:
-                        curr_board['userspace'].append(img['userspace'])
-                    for img_feature in img['features']:
-                        if img_feature not in curr_board['features']:
-                            curr_board['features'].append(img_feature)
+        curr_board["thumbnail"] = board_json["pictures"][0] if len(board_json["pictures"]) > 0 else None
+        curr_board["mark"] = []
+        curr_board["url"] = os.path.relpath(board_json_file, args.ref_root)
+
+        for distro in board_json["imagesuites"]:
+            for distro_release in distro["releases"]:
+                for suite in distro_release["imagesuites"]:
+                    if suite["kernel"]["type"] in [ "RVCK", "OLK" ]:
+                        curr_board["mark"] = list(set(curr_board["mark"] + [suite["kernel"]["type"]]))
         boardlist.append(curr_board)
     with open(args.output_file, 'w') as fp:
         json.dump(boardlist, fp, indent=2)
@@ -48,8 +37,8 @@ if __name__ == "__main__":
                             required=True, type=str,
                             )
     arg_parser.add_argument("-r", "--ref_root", action='store',
-                            help="Root of build dir",
-                            required=False, type=str, default='build'
+                            help="Root of dist dir",
+                            required=True, type=str
                             )
     arg_parser.add_argument("input_files", action='store',
                             help="JSON documents to be combined",

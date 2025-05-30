@@ -1,0 +1,57 @@
+Jupter:
+  vendor: !fref vendor.zh_CN.yml
+  soc: !fref ../spacemit/k1.zh_CN.yml
+  type: mATX
+  status: SUPPORTED
+  pictures:
+    - !fref /gallery/milkv/jupter/jupter-view.webp
+  hw_info:
+    ram:
+      type: LPDDR4X
+      rate: 4266MT
+      width: 32
+      capacity:
+        - 4GB
+        - 8GB
+        - 16GB
+    storage:
+      - type: NOR Flash
+        capacity:
+          - 8MB
+      - type: eMMC
+        revision: '5.1'
+        capacity:
+          - NC
+      - type: microSD
+        revision: SDXC 3.0
+      - type: M.2
+        revision: M-Key, PCIe2.0x2
+        nums: 1
+    connectivity:
+      - type: PCIe x8
+        revision: PCIe2.1x2
+        nums: 1
+      - type: USB-A
+        revision: '3.0'
+        nums: 1
+      - type: USB-A
+        revision: '2.0'
+        nums: 1
+      - type: USB-C
+        revision: 2.0 OTG
+        nums: 1
+      - type: Ethernet
+        revision: 1GbE
+        nums: 2
+      - type: F_PANEL USB
+        revision: '3.0'
+        nums: 2
+      - type: F_PANEL USB
+        revision: '2.0'
+        nums: 2
+      - type: HDMI
+        revision: '2.0'
+        nums: 1
+      - type: 3.5mm Jack
+        revision: 4-rings
+    peripheral: []

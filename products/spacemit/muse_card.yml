@@ -1,13 +1,13 @@
 MUSE Card:
   hw_rev:
     - V20
-  vendor: !ref { resc: spacemit/vendor.yml, category: products }
-  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref k1.yml
   type: SBC
   status: SUPPORTED
   pictures:
-    - !ref { resc: spacemit/muse-card/muse_card_official.webp, category: resources }
-  hw_features:
+    - !fref /gallery/spacemit/muse-card/muse_card_official.webp
+  hw_info:
     ram:
       type: LPDDR4X
       rate: 2666MT
@@ -44,3 +44,4 @@ MUSE Card:
         nums: 2
       - type: MIPI-DSI
         revision: 4-lanes
+    peripheral: []

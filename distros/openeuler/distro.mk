@@ -1,4 +1,4 @@
-OPENEULER_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
+OPENEULER_DIR := $(fetch_last_dir)
 
 DISTROS += $(OPENEULER_DIR)/distro.yml
 

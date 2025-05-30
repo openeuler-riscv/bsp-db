@@ -1,12 +1,12 @@
-24.03-LTS-SP1:
-  belongs_to: !ref { resc: openeuler/distro.yml, category: distros }
-  release_date: Dec., 2024
-  components:
-    - name: glibc
-      version: 2.38-47.oe2403sp1
-    - name: gcc
-      version: 12.3.1-62.oe2403sp1
-    - name: llvm
-      version: 17.0.6-28.oe2403sp1
-    - name: qemu
-      version: 8.2.0-27.oe2403sp1
+name: 24.03-LTS-SP1
+belongs_to: !fref ../distro.yml
+release_date: Dec., 2024
+components:
+  - name: glibc
+    version: 2.38-47.oe2403sp1
+  - name: gcc
+    version: 12.3.1-62.oe2403sp1
+  - name: llvm
+    version: 17.0.6-28.oe2403sp1
+  - name: qemu
+    version: 8.2.0-27.oe2403sp1

@@ -1,0 +1,3 @@
+name: 23H1
+belongs_to: !fref ../distro.zh_CN.yml
+release_date: '2023'

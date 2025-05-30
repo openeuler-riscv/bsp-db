@@ -1,36 +1,44 @@
-spacemit-k1-24.03.sp1:
-  belongs_to: !ref { resc: openeuler/24.03sp1/release-info.yml, category: distros }
-  compatible:
-    - !ref { resc: spacemit/muse_pi.yml, category: products }
-    - !ref { resc: spacemit/muse_card.yml, category: products }
-    - !ref { resc: bananapi/f3.yml, category: products }
-    - !ref { resc: milkv/jupter.yml, category: products }
-    - !ref { resc: orangepi/rv2.yml, category: products }
-    - !ref { resc: spacemit/muse_box.yml, category: products }
-    - !ref { resc: spacemit/muse_pi_pro.yml, category: products }
+- name: Headless Image
+  userspace: !fref ../release-info.yml
   kernel:
-    type: VENDOR
-    branch: '6.6'
-    version: '6.6.63'
-  userspace: Headless
+    type: Vendor
+    version: '6.6'
+    src: 'https://gitee.com/src-oerv/kernel-3rd/tree/vendor-6.6-spacemit-k1/'
   isa:
-    profile: RVA20
-    extensions: [ ]
-  type: RawDiskImage
-  features:
-    - UBOOT
-    - BOOTSTD
-    - FDT
-  files:
-    - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250421/openEuler-24.03-LTS-SP1-base-spacemit_k1-testing.img.zst
-      tags:
-        - system-image
-      hash:
-        sha256: a2fc71010758cc4bf6cf8112395c8236b9b15575aa5fb8dd92a5f7fda5e74fe8
-    - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250421/spacemit_k1_fw.tar.zst
-      tags:
-        - firmware
-      hash:
-        sha256: 6c94fe2d98570806137cc2f78f58729250b6321a1db8b390a047b0171e3fa155
-  docs:
-    - !ref { resc: spacemit/k1-uboot-bootstd.md, category: docs }
+    march: !!set
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - DistroBoot
+  flavor: Headless
+  _compatible_:
+    - &musepi !fref /products/spacemit/muse_pi.yml
+    - &musecard !fref /products/spacemit/muse_card.yml
+    - &bpif3 !fref /products/bananapi/f3.yml
+    - &jupter !fref /products/milkv/jupter.yml
+    - &rv2 !fref /products/orangepi/rv2.yml
+    - &musebox !fref /products/spacemit/muse_box.yml
+    - &musepipro !fref /products/spacemit/muse_pi_pro.yml
+  revisions:
+    - date: 2025-04-21
+      status: Released
+      compatible: [*musepi, *musecard, *bpif3, *jupter, *musebox, *musepipro ]
+      changelog: |
+        none
+      regressions: |
+        kernel: broken support for RV2 due to outdated FDT after esos.elf upgrade
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250421/openEuler-24.03-LTS-SP1-base-spacemit_k1-testing.img.zst
+          tags:
+            - system
+          hash:
+            sha256: a2fc71010758cc4bf6cf8112395c8236b9b15575aa5fb8dd92a5f7fda5e74fe8
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/testing/spacemit_k1_20250421/spacemit_k1_fw.tar.zst
+          tags:
+            - firmware
+          hash:
+            sha256: 6c94fe2d98570806137cc2f78f58729250b6321a1db8b390a047b0171e3fa155
+      docs:
+        - file: !fref /docs/spacemit/k1-uboot-bootstd.md

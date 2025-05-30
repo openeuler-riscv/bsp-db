@@ -1,11 +1,11 @@
 RV2:
-  vendor: !ref { resc: orangepi/vendor.yml, category: products }
-  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref ../ky/x1.yml
   type: SBC
   status: SUPPORTED
   pictures:
-    - !ref { resc: orangepi/rv2/rv2-view.webp, category: resources }
-  hw_features:
+    - !fref /gallery/orangepi/rv2/rv2-view.webp
+  hw_info:
     ram:
       type: LPDDR4X
       rate: 4266MT
@@ -47,3 +47,4 @@ RV2:
         revision: 4-lanes
       - type: 3.5mm Jack
         revision: 4-rings
+    peripheral: []

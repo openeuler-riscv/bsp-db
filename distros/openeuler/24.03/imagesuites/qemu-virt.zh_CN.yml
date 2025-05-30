@@ -1,0 +1,41 @@
+- name: 无桌面镜像
+  userspace: !fref ../release-info.zh_CN.yml
+  kernel:
+    type: OLK
+    version: '6.6'
+    src: 'https://github.com/RVCK-Project/rvck-olk/tree/OLK-6.6'
+  isa:
+    march: !!set
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - UEFI
+  flavor: 无桌面镜像
+  _compatible_:
+    - &qemu_system !fref /products/qemu/system.zh_CN.yml
+  revisions:
+    - date: 2024-06-06
+      status: 发布版
+      compatible: [ *qemu_system ]
+      changelog: |
+        none
+      files:
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/virtual_machine_img/riscv64/RISCV_VIRT_CODE.fd
+          tags:
+            - firmware
+          hash:
+            sha256: 758ce83631eb93a7b19d5f2f9ac84f34f9f8854e71698e4a088920aa86f03fd5
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/virtual_machine_img/riscv64/RISCV_VIRT_VARS.fd
+          tags:
+            - firmware
+          hash:
+            sha256: cbc804cabde37783e1d04ecf5c40df35faad1dc6114678e2c2c309a14b2fa568
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/virtual_machine_img/riscv64/openEuler-24.03-LTS-riscv64.qcow2.xz
+          tags:
+            - system-image
+          hash:
+            sha256: aa08a2d8da3b0f3a369335be6e8bfda969e5e25dbe6ff9d76a10dd158138a509
+      docs:
+        - !fref /docs/qemu/qemu-system-fdt.md

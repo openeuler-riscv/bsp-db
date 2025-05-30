@@ -1,11 +1,11 @@
 MUSE Pi Pro:
-  vendor: !ref { resc: spacemit/vendor.yml, category: products }
-  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref k1.yml
   type: SBC
   status: SUPPORTED
   pictures:
-    - !ref { resc: spacemit/muse-pi-pro/musepipro_view.webp, category: resources }
-  hw_features:
+    - !fref /gallery/spacemit/muse-pi-pro/musepipro_view.webp
+  hw_info:
     ram:
       type: LPDDR4X
       rate: 2666MT
@@ -57,3 +57,4 @@ MUSE Pi Pro:
       - type: 3.5mm Jack
         revision: 4-rings
         nums: 1
+    peripheral: []

@@ -1,11 +1,11 @@
 MUSE Box:
-  vendor: !ref { resc: spacemit/vendor.yml, category: products }
-  soc: !ref { resc: spacemit/k1_m1.yml, category: products }
+  vendor: !fref vendor.yml
+  soc: !fref k1.yml
   type: Mini-ITX
   status: SUPPORTED
   pictures:
-    - !ref { resc: spacemit/muse-box/muse-box-view.webp, category: resources }
-  hw_features:
+    - !fref /gallery/spacemit/muse-box/muse-box-view.webp
+  hw_info:
     ram:
       type: LPDDR4X
       rate: 2666MT
@@ -45,3 +45,4 @@ MUSE Box:
       - type: 3.5mm Jack
         revision: 3-rings
         nums: 2
+    peripheral: []

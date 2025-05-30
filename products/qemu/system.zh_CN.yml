@@ -1,0 +1,7 @@
+qemu-system:
+  vendor: !fref vendor.zh_CN.yml
+  soc: !fref virt.zh_CN.yml
+  type: Emulated
+  status: SUPPORTED
+  pictures:
+    - !fref /gallery/qemu/Qemu_logo.svg

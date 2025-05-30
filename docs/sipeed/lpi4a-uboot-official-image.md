@@ -16,7 +16,7 @@
 需要配置 udev rules 来解决 USB 设备文件权限问题。执行下述命令完成配置：
 
 ```shell
-cat << EOF | sudo tee /etc/udev/rules.d/99-thead-th1520.rules
+cat << EOF | sudo tee /etc/udev/rules.d/99-xuantie-th1520.rules
 SUBSYSTEM=="usb", ATTR{idVendor}=="2345", ATTR{idProduct}=="7654", MODE="0660", GROUP="plugdev", TAG+="uaccess"
 SUBSYSTEM=="usb", ATTR{idVendor}=="1234", ATTR{idProduct}=="8888", MODE="0660", GROUP="plugdev", TAG+="uaccess"
 EOF

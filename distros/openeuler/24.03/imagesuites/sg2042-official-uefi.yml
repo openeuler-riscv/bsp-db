@@ -1,30 +1,37 @@
-official-24.03:
-  belongs_to: !ref { resc: openeuler/24.03/release-info.yml, category: distros }
-  compatible:
-    - !ref { resc: milkv/pioneer.yml, category: products }
+- name: Unified ISO Installer
+  userspace: !fref ../release-info.yml
   kernel:
-    type: RVCK
-    branch: '6.6'
-    version: 6.6.0-27.0.0.31.oe2403
-  userspace: Headless
+    type: OLK
+    version: '6.6'
+    src: 'https://github.com/RVCK-Project/rvck-olk/tree/OLK-6.6'
   isa:
-    profile: RVA20
-    extensions: [ ]
-  type: Installer
-  features:
-    - EFI
-    - FDT
-  files:
-    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/SG2042/sg2042_firmware_uefi.img.zip
-      tags:
-        - firmware
-        - milkv/pioneer
-      hash:
-        sha256: d7a936304bc01dfb8ccb47dc6df6527aecba4886940313355f68283dbc32fdf5
-    - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/ISO/riscv64/openEuler-24.03-LTS-riscv64-dvd.iso
-      tags:
-        - os-installer
-      hash:
-        sha256: f49a5da648c53af30aa1a5bcc784685d75baca08743c840889bff32655b6a4e1
-  docs:
-    - !ref { resc: milkv/pioneer-oerv2403-uefi.md, category: docs }
+    march: !!set
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - UEFI
+  flavor: Installer
+  _compatible_:
+    - &pioneer !fref /products/milkv/pioneer.yml
+  revisions:
+    - date: 2024-06-06
+      status: Released
+      compatible: [ *pioneer ]
+      changelog: |
+        none
+      files:
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/embedded_img/riscv64/SG2042/sg2042_firmware_uefi.img.zip
+          tags:
+            - firmware
+            - milkv/pioneer
+          hash:
+            sha256: d7a936304bc01dfb8ccb47dc6df6527aecba4886940313355f68283dbc32fdf5
+        - url: https://mirror.iscas.ac.cn/openeuler/openEuler-24.03-LTS/ISO/riscv64/openEuler-24.03-LTS-riscv64-dvd.iso
+          tags:
+            - os-installer
+          hash:
+            sha256: f49a5da648c53af30aa1a5bcc784685d75baca08743c840889bff32655b6a4e1
+      docs:
+        - !fref /docs/milkv/pioneer-oerv2403-uefi.md
