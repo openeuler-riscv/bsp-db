@@ -1,5 +1,9 @@
 #!/usr/bin/env make
 
+##### Have default "all" target listed at the beginning
+.PHONY: default
+default: all
+
 ##### Setup out-of-tree build
 # ROOT_DIR & WORK_DIR are all absolute path.
 # As well as DIST_DIR & STAGING_DIR
@@ -20,10 +24,6 @@ STAGING_DIR := $(WORK_DIR)/staging
 # Generated JSON API compatiblity
 JSON_API_VER := v2
 DIST_DIR := $(WORK_DIR)/dist/$(JSON_API_VER)
-
-##### Have default "all" target listed at the beginning
-.PHONY: default
-default: all
 
 ##### Some useful shortcuts
 dir_guard=@mkdir -p $(@D)
@@ -197,3 +197,6 @@ dist: $(SYNC_DIST_TARGETS) per_board_json board_list_json
 .PHONY: clean
 clean:
 	rm -rf $(WORK_DIR)
+
+.PHONY: all
+all: clean check dist
