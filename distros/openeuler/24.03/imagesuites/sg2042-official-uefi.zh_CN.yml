@@ -5,7 +5,7 @@
     version: '6.6'
     src: 'https://github.com/RVCK-Project/rvck-olk/tree/OLK-6.6'
   isa:
-    march: !!set
+    march:
       <<: !inc
         path: /include/yaml/riscv-extensions.yml
         node: [ profile, RVA20, U64, mandatory ]

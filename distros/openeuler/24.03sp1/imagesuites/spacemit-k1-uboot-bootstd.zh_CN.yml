@@ -5,7 +5,7 @@
     version: '6.6'
     src: 'https://gitee.com/src-oerv/kernel-3rd/tree/vendor-6.6-spacemit-k1/'
   isa:
-    march: !!set
+    march:
       <<: !inc
         path: /include/yaml/riscv-extensions.yml
         node: [ profile, RVA20, U64, mandatory ]

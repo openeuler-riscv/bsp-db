@@ -1,183 +1,386 @@
-extension:
-dependency:
-  D: !!set
-    ? F
-  F: !!set
-    ? Zicsr
-extension_group:
-  G: &G !!set
-    ? I
-    ? M
-    ? A
-    ? F
-    ? D
-    ? Zicsr
-    ? Zifencei
-  Sha: &Sha !!set
-    ? H
-    ? Ssstateen
-    ? Shcounterenw
-    ? Shvstvala
-    ? Shtvala
-    ? Shvstvecd
-    ? Shvsatpa
-    ? Shgatpa
-  B: &B !!set
-    ? Zba
-    ? Zbb
-    ? Zbs
+extension: !!omap
+  - &I I:
+      desc: Integer
+  - &E E:
+      desc: Reduced Integer
+  - &M M:
+      desc: Integer Multiplication and Division
+  - &A A:
+      desc: Atomics
+  - &F F:
+      desc: Single-Precision Floating-Point
+  - &D D:
+      desc: Double-Precision Floating-Point
+  - &G G:
+      desc: General
+  - &Q Q:
+      desc: Quad-Precision Floating-Point
+  - &C C:
+      desc: 16-bit Compressed Instructions
+  - &B B:
+      desc: Bit Manipulation
+  - &P P:
+      desc: Packed-SIMD Extensions
+  - &V V:
+      desc: Vector Extension
+  - &H H:
+      desc: Hypervisor Extension
+  # Zi*
+  - &Zic64b Zic64b:
+      desc: TBD
+  - &Zicbom Zicbom:
+      desc: TBD
+  - &Zicbop Zicbop:
+      desc: TBD
+  - &Zicboz Zicboz:
+      desc: TBD
+  - &Ziccamoa Ziccamoa:
+      desc: TBD
+  - &Ziccamoc Ziccamoc:
+      desc: TBD
+  - &Ziccif Ziccif:
+      desc: TBD
+  - &Zicclsm Zicclsm:
+      desc: TBD
+  - &Ziccrse Ziccrse:
+      desc: TBD
+  - &Zicfilp Zicfilp:
+      desc: TBD
+  - &Zicfiss Zicfiss:
+      desc: TBD
+  - &Zicntr Zicntr:
+      desc: TBD
+  - &Zicond Zicond:
+      desc: TBD
+  - &Zicsr Zicsr:
+      desc: TBD
+  - &Zifencei Zifencei:
+      desc: TBD
+  - &Zihintntl Zihintntl:
+      desc: TBD
+  - &Zihintpause Zihintpause:
+      desc: TBD
+  - &Zihpm Zihpm:
+      desc: TBD
+  - &Zimop Zimop:
+      desc: TBD
+  # Za*
+  - &Za64rs Za64rs:
+      desc: TBD
+  - &Za128rs Za128rs:
+      desc: TBD
+  - &Zabha Zabha:
+      desc: TBD
+  - &Zacas Zacas:
+      desc: TBD
+  - &Zama16b Zama16b:
+      desc: TBD
+  - &Zawrs Zawrs:
+      desc: TBD
+  # Zf*
+  - &Zfa Zfa:
+      desc: TBD
+  - &Zfbfmin Zfbfmin:
+      desc: TBD
+  - &Zfh Zfh:
+      desc: TBD
+  - &Zfhmin Zfhmin:
+      desc: TBD
+  # Zc*
+  - &Zcb Zcb:
+      desc: TBD
+  - &Zcmop Zcmop:
+      desc: TBD
+  # Zb*
+  - &Zba Zba:
+      desc: TBD
+  - &Zbb Zbb:
+      desc: TBD
+  - &Zbc Zbc:
+      desc: TBD
+  - &Zbs Zbs:
+      desc: TBD
+  # Zk*
+  - &Zkn Zkn:
+      desc: TBD
+  - &Zks Zks:
+      desc: TBD
+  - &Zkr Zkr:
+      desc: TBD
+  - &Zkt Zkt:
+      desc: TBD
+  # Zv*
+  - &Zvbb Zvbb:
+      desc: TBD
+  - &Zvbc Zvbc:
+      desc: TBD
+  - &Zvfbfmin Zvfbfmin:
+      desc: TBD
+  - &Zvfbfwma Zvfbfwma:
+      desc: TBD
+  - &Zvfh Zvfh:
+      desc: TBD
+  - &Zvfhmin Zvfhmin:
+      desc: TBD
+  - &Zvkng Zvkng:
+      desc: TBD
+  - &Zvksg Zvksg:
+      desc: TBD
+  - &Zvkt Zvkt:
+      desc: TBD
+  # S*
+  - &Sdtrig Sdtrig:
+      desc: TBD
+  - &Ss Ss:
+      desc: TBD
+  - &Ssccptr Ssccptr:
+      desc: TBD
+  - &Sscofpmf Sscofpmf:
+      desc: TBD
+  - &Sscounterenw Sscounterenw:
+      desc: TBD
+  - &Ssnpm Ssnpm:
+      desc: TBD
+  - &Sspm Ssnpm:
+      desc: TBD
+  - &Ssstateen Ssstateen:
+      desc: TBD
+  - &Ssstrict Ssstrict:
+      desc: TBD
+  - &Sstc Sstc:
+      desc: TBD
+  - &Sstvala Sstvala:
+      desc: TBD
+  - &Sstvecd Sstvecd:
+      desc: TBD
+  - &Ssu64xl Ssu64xl:
+      desc: TBD
+  - &Supm Supm:
+      desc: TBD
+  - &Sv39 Sv39:
+      desc: TBD
+  - &Sv48 Sv48:
+      desc: TBD
+  - &Sv57 Sv57:
+      desc: TBD
+  - &Svade Svade:
+      desc: TBD
+  - &Svadu Svadu:
+      desc: TBD
+  - &Svbare Svbare:
+      desc: TBD
+  - &Svinval Svinval:
+      desc: TBD
+  - &Svnapot Svnapot:
+      desc: TBD
+  - &Svpbmt Svpbmt:
+      desc: TBD
+  - &Svvptc Svvptc:
+      desc: TBD
+  # Sh*
+  - &Sha Sha:
+      desc: TBD
+  - &Shcounterenw Shcounterenw:
+      desc: TBD
+  - &Shgatpa Shgatpa:
+      desc: TBD
+  - &Shtvala Shtvala:
+      desc: TBD
+  - &Shvsatpa Shvsatpa:
+      desc: TBD
+  - &Shvstvala Shvstvala:
+      desc: TBD
+  - &Shvstvecd Shvstvecd:
+      desc: TBD
+  # Sm*
+  # X*
+  - &X X:
+      desc: TBD
+imply:
+  *F:
+    - *Zicsr
+  *D:
+    - *F
+  *G:
+    - *I
+    - *M
+    - *A
+    - *F
+    - *D
+    - *Zicsr
+    - *Zifencei
+  *Q:
+    - *D
+  *B:
+    - *Zba
+    - *Zbb
+    - *Zbs
+  *V:
+    - *D
+  *Sha:
+    - *H
+    - *Ssstateen
+    - *Shcounterenw
+    - *Shvstvala
+    - *Shtvala
+    - *Shvstvecd
+    - *Shvsatpa
+    - *Shgatpa
 profile:
   RVI20:
     U64:
       base_isa: RV64I
-      mandatory: !!set
-      optional: !!set
-        ? M
-        ? A
-        ? F
-        ? D
-        ? C
-        ? Zifencei
-        ? Zicntr
-        ? Zihpm
+      mandatory: {}
+      optional:
+        *M:
+        *A:
+        *F:
+        *D:
+        *C:
+        *Zifencei:
+        *Zicntr:
+        *Zihpm:
   RVA20:
     U64:
       base_isa: RV64I
-      mandatory: &RVA20U64M !!set
-        ? M
-        ? A
-        ? F
-        ? D
-        ? C
-        ? Zicsr
-        ? Zicntr
-        ? Ziccif
-        ? Ziccrse
-        ? Ziccamoa
-        ? Za128rs
-        ? Zicclsm
-      optional: !!set
-        ? Zihpm
+      mandatory: &RVA20U64M
+        *M:
+        *A:
+        *F:
+        *D:
+        *C:
+        *Zicsr:
+        *Zicntr:
+        *Ziccif:
+        *Ziccrse:
+        *Ziccamoa:
+        *Za128rs:
+        *Zicclsm:
+      optional:
+        *Zihpm:
     S64:
       base_isa: RV64I
-      mandatory: !!set
+      mandatory:
         <<: *RVA20U64M
-        ? Zifencei
-        ? Ss1p11
-        ? Svbare
-        ? Sv39
-        ? Svade
-        ? Ssccptr
-        ? Sstvecd
-        ? Sstvala
-      optional: !!set
-        ? Zihpm
-        ? Sv48
-        ? Ssu64xl
+        *Zifencei:
+        *Ss:
+          revision: 1.11
+        *Svbare:
+        *Sv39:
+        *Svade:
+        *Ssccptr:
+        *Sstvecd:
+        *Sstvala:
+      optional:
+        *Zihpm:
+        *Sv48:
+        *Ssu64xl:
   RVA22:
     U64:
       base_isa: RV64I
-      mandatory: &RVA22U64M !!set
+      mandatory: &RVA22U64M
         <<: *RVA20U64M
-        <<: *B
-        ? Za64rs
-        ? Zihpm
-        ? Zihintpause
-        ? Zic64b
-        ? Zicbom
-        ? Zicbop
-        ? Zicboz
-        ? Zfhmin
-        ? Zkt
-      optional: !!set
-        ? Zfh
-        ? V
-        ? Zkn
-        ? Zks
+        *B:
+        *Za64rs:
+        *Zihpm:
+        *Zihintpause:
+        *Zic64b:
+        *Zicbom:
+        *Zicbop:
+        *Zicboz:
+        *Zfhmin:
+        *Zkt:
+      optional:
+        *Zfh:
+        *V:
+        *Zkn:
+        *Zks:
     S64:
       base_isa: RV64I
-      mandatory: !!set
+      mandatory:
         <<: *RVA22U64M
-        ? Zifencei
-        ? Ss1p12
-        ? Svbare
-        ? Sv39
-        ? Svade
-        ? Ssccptr
-        ? Sstvecd
-        ? Sstvala
-        ? Sscounterenw
-        ? Svpbmt
-        ? Svinval
-      optional: !!set
-        ? Sv48
-        ? Sv57
-        ? Svnapot
-        ? Ssu64xl
-        ? Sstc
-        ? Sscofpmf
-        ? Zkr
-        <<: *Sha
+        *Zifencei:
+        *Ss:
+          revision: 1.12
+        *Svbare:
+        *Sv39:
+        *Svade:
+        *Ssccptr:
+        *Sstvecd:
+        *Sstvala:
+        *Sscounterenw:
+        *Svpbmt:
+        *Svinval:
+      optional:
+        *Sv48:
+        *Sv57:
+        *Svnapot:
+        *Ssu64xl:
+        *Sstc:
+        *Sscofpmf:
+        *Zkr:
+        *Sha:
   RVA23:
     U64:
       base_isa: RV64I
-      mandatory: &RVA23U64M !!set
+      mandatory: &RVA23U64M
         <<: *RVA22U64M
-        ? V
-        ? Zvfhmin
-        ? Zvbb
-        ? Zvkt
-        ? Zihintntl
-        ? Zicond
-        ? Zimop
-        ? Zcmop
-        ? Zcb
-        ? Zfa
-        ? Zawrs
-        ? Supm
-      optional: !!set
-        ? Zvkng
-        ? Zvksg
-        ? Zabha
-        ? Zacas
-        ? Ziccamoc
-        ? Zvbc
-        ? Zama16b
-        ? Zfh
-        ? Zbc
-        ? Zicfilp
-        ? Zicfiss
-        ? Zvfh
-        ? Zfbfmin
-        ? Zvfbfmin
-        ? Zvfbfwma
+        *V:
+        *Zvfhmin:
+        *Zvbb:
+        *Zvkt:
+        *Zihintntl:
+        *Zicond:
+        *Zimop:
+        *Zcmop:
+        *Zcb:
+        *Zfa:
+        *Zawrs:
+        *Supm:
+      optional:
+        *Zvkng:
+        *Zvksg:
+        *Zabha:
+        *Zacas:
+        *Ziccamoc:
+        *Zvbc:
+        *Zama16b:
+        *Zfh:
+        *Zbc:
+        *Zicfilp:
+        *Zicfiss:
+        *Zvfh:
+        *Zfbfmin:
+        *Zvfbfmin:
+        *Zvfbfwma:
     S64:
       base_isa: RV64I
-      mandatory: !!set
+      mandatory:
         <<: *RVA23U64M
-        ? Zifencei
-        ? Ss1p13
-        ? Svbare
-        ? Sv39
-        ? Svade
-        ? Ssccptr
-        ? Sstvecd
-        ? Sstvala
-        ? Sscounterenw
-        ? Svpbmt
-        ? Svinval
-        ? Svnapot
-        ? Sstc
-        ? Sscofpmf
-        ? Ssnpm
-        ? Ssu64xl
-        <<: *Sha
-      optional: !!set
-        ? Sv48
-        ? Sv57
-        ? Zkr
-        ? Svadu
-        ? Sdtrig
-        ? Ssstrict
-        ? Svvptc
-        ? Sspm
+        *Zifencei:
+        *Ss:
+          revision: 1.13
+        *Svbare:
+        *Sv39:
+        *Svade:
+        *Ssccptr:
+        *Sstvecd:
+        *Sstvala:
+        *Sscounterenw:
+        *Svpbmt:
+        *Svinval:
+        *Svnapot:
+        *Sstc:
+        *Sscofpmf:
+        *Ssnpm:
+        *Ssu64xl:
+        *Sha:
+      optional:
+        *Sv48:
+        *Sv57:
+        *Zkr:
+        *Svadu:
+        *Sdtrig:
+        *Ssstrict:
+        *Svvptc:
+        *Sspm:

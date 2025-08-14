@@ -44,7 +44,7 @@ __root__:
         schema:
           march:
             required: true
-            type: set
+            type: dict
             # TODO: vaidate items in set (currently not supported)
           mabi:
             required: true

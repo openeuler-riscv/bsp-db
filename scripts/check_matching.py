@@ -37,6 +37,8 @@ class YMLStructCompare:
             self.compare_set(yml_a, yml_b)
         elif isinstance(yml_a, yml_helper.FileReference):
             self.compare_fref(yml_a, yml_b)
+        elif yml_a is None:
+            self.compare_none(yml_a, yml_b)
         else:
             raise Exception("Unsupported type %s @ %s"%(str(type(yml_a)), str(self.history)))
 
@@ -65,6 +67,10 @@ class YMLStructCompare:
 
     def compare_fref(self, yml_a, yml_b):
         pass
+
+    def compare_none(self, yml_a, yml_b):
+        if yml_a or yml_b:
+            raise Exception("mismatched None @ %s"%(str(self.history)))
 
 
 def main(args: argparse.Namespace):

@@ -38,8 +38,16 @@ def main(args: argparse.Namespace):
                             "type": suite["kernel"]["type"],
                             "version": suite["kernel"]["version"],
                         }
+                        def march_version_fixup(march_dict):
+                            results = []
+                            for march in march_dict:
+                                if march_dict[march] and march_dict[march]["revision"]:
+                                    results.append(march + str(march_dict[march]["revision"]).replace(".", "p"))
+                                else:
+                                    results.append(march)
+                            return results
                         suite_json["isa"] = {
-                            "march": list(suite["isa"]["march"]),
+                            "march": march_version_fixup(suite["isa"]["march"]),
                             "mabi": suite["isa"]["mabi"]
                         }
                         suite_json["loader"] = suite["loader"]
