@@ -191,8 +191,13 @@ $(foreach LANG,$(ALT_LANGS),$(eval $(call BOARD_LIST_TEMPLATE,$(LANG),.$(LANG)))
 .PHONY: board_list_json
 board_list_json: $(BOARD_LIST_TARGETS)
 
+.PHONY: riscv_isa_info
+riscv_isa_info: $(DIST_DIR)/resources/riscv64_isa_extensions.json
+$(DIST_DIR)/resources/riscv64_isa_extensions.json: $(STAGING_DIR)/include/yaml/riscv-extensions.yml
+	$(ROOT_DIR)/scripts/gen_isa_info.py -i $< -o $@
+
 .PHONY: dist
-dist: $(SYNC_DIST_TARGETS) per_board_json board_list_json
+dist: $(SYNC_DIST_TARGETS) per_board_json board_list_json riscv_isa_info
 
 .PHONY: clean
 clean:
