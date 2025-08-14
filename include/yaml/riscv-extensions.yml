@@ -194,8 +194,6 @@ extension: !!omap
       desc: TBD
   # Sm*
   # X*
-  - &X X:
-      desc: TBD
 imply:
   *F:
     - *Zicsr
