@@ -6,6 +6,7 @@ from yml_helper import load_yaml_file, FileReference
 import json
 import re
 import datetime
+import os
 
 
 def json_serialize(obj):
@@ -15,10 +16,12 @@ def json_serialize(obj):
 
 def fetch_distro(ref, base_path):
     distro = load_yaml_file(ref.path, base_path=base_path)
+    distro["id"] = os.path.normpath(ref.path).split(os.sep)[-2]
     return distro
 
 def fetch_distro_release(ref, base_path):
     distro_release = load_yaml_file(ref.path, base_path=base_path)
+    distro_release["id"] = os.path.normpath(ref.path).split(os.sep)[-2]
     return distro_release
 
 def main(args: argparse.Namespace):
@@ -33,6 +36,7 @@ def main(args: argparse.Namespace):
                 with FileLock(args.root + target_json_file + ".lock", timeout=-1):
                     with open(args.output + target_json_file, "r+") as f:
                         suite_json = {}
+                        suite_json["id"] = os.path.normpath(args.input_file).split(os.sep)[-1].split(".")[0]
                         suite_json["name"] = suite["name"]
                         suite_json["kernel"] = {
                             "type": suite["kernel"]["type"],
@@ -64,19 +68,21 @@ def main(args: argparse.Namespace):
                             revision_json["regression"] = revision["regression"]
 
                         target_json = json.load(f)
-                        if not any(existing_distro["name"] == distro["name"] for existing_distro in target_json["imagesuites"]):
+                        if not any(existing_distro["id"] == distro["id"] for existing_distro in target_json["imagesuites"]):
                             target_json["imagesuites"].append({
+                                "id": distro["id"],
                                 "name": distro["name"],
                                 "releases": []
                             })
-                        target_distro_json = next((existing_distro for existing_distro in target_json["imagesuites"] if existing_distro['name'] == distro["name"]), None)
-                        if not any(existing_distro_release["name"] == distro_release["name"] for existing_distro_release in target_distro_json["releases"]):
+                        target_distro_json = next((existing_distro for existing_distro in target_json["imagesuites"] if existing_distro['id'] == distro["id"]), None)
+                        if not any(existing_distro_release["id"] == distro_release["id"] for existing_distro_release in target_distro_json["releases"]):
                             target_distro_json["releases"].append({
+                                "id": distro_release["id"],
                                 "name": distro_release["name"],
                                 "imagesuites": []
                             })
-                        target_release_json = next((existing_release for existing_release in target_distro_json["releases"] if existing_release['name'] == distro_release["name"]), None)
-                        if not any(existing_suite["name"] == suite["name"] for existing_suite in target_release_json["imagesuites"]):
+                        target_release_json = next((existing_release for existing_release in target_distro_json["releases"] if existing_release['id'] == distro_release["id"]), None)
+                        if not any(existing_suite["id"] == suite_json["id"] for existing_suite in target_release_json["imagesuites"]):
                             target_release_json["imagesuites"].append(suite_json)
 
                         for imgfile in revision["files"]:
