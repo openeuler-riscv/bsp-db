@@ -2,24 +2,32 @@
 import argparse
 import os
 import json
+import re
 
 
 def main(args: argparse.Namespace):
     boardlist = []
+    id_regex = re.compile(r".*products\/(.+)\/(.+)\.json$")
+
     for board_json_file in args.input_files:
         with open(board_json_file, 'r') as fp:
             board_json = json.load(fp)
 
+        vendor_id, board_id = id_regex.match(board_json_file).groups()
+
         curr_board = {}
         curr_board["name"] = board_json["name"]
-        curr_board["vendor"] = board_json["vendor"]["name"]
+        curr_board["id"] = board_id
+        curr_board["vendor"] = {
+            "name": board_json["vendor"]["name"],
+            "id": vendor_id
+        }
         curr_board["soc"] = {
             "name": board_json["soc"]["name"],
             "vendor": board_json["soc"]["vendor"]["name"],
         }
         curr_board["thumbnail"] = board_json["pictures"][0] if len(board_json["pictures"]) > 0 else None
         curr_board["mark"] = []
-        curr_board["url"] = os.path.relpath(board_json_file, args.ref_root)
 
         for distro in board_json["imagesuites"]:
             for distro_release in distro["releases"]:
