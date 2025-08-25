@@ -28,6 +28,7 @@ def main(args: argparse.Namespace):
         }
         curr_board["thumbnail"] = board_json["pictures"][0] if len(board_json["pictures"]) > 0 else None
         curr_board["mark"] = []
+        curr_board["available"] = len(board_json["imagesuites"]) > 0
 
         for distro in board_json["imagesuites"]:
             for distro_release in distro["releases"]:
