@@ -1,0 +1,7 @@
+SG2042:
+  vendor: !fref vendor.yml
+  release_date: '2024'
+  harts:
+    - name: XuanTie C920v2
+      nums: 64
+      freq: 2.4GHz

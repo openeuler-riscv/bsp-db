@@ -1,0 +1,7 @@
+SG2042:
+  vendor: !fref vendor.zh_CN.yml
+  release_date: '2024'
+  harts:
+    - name: 玄铁 C920v2
+      nums: 64
+      freq: 2.4GHz

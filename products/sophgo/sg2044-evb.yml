@@ -1,0 +1,28 @@
+SG2044 EVB:
+  vendor: !fref vendor.yml
+  soc: !fref ./sg2044.yml
+  type: mATX
+  status: SUPPORTED
+  pictures: []
+  hw_info:
+    ram:
+      type: LPDDR5X
+      width: 512
+      rate: 8533MT
+      capacity:
+        - 128GB
+    storage:
+      - type: NOR Flash
+        capacity:
+          - NC
+        nums: 2
+      - type: microSD
+        revision: SDXC
+    connectivity:
+      - type: Ethernet
+        revision: 1GbE
+        nums: 1
+      - type: PCIe x8
+        revision: PCIe5.0x8
+        nums: 5
+    peripheral: []
