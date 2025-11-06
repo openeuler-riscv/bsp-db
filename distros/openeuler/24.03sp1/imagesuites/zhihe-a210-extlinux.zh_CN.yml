@@ -1,0 +1,40 @@
+- name: 无桌面镜像
+  userspace: !fref ../release-info.zh_CN.yml
+  kernel:
+    type: 厂商
+    version: '6.6'
+    src: 'https://gitee.com/zhcomputing/kernel'
+  isa:
+    march:
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - DistroBoot
+  flavor: 无桌面镜像
+  _compatible_:
+    - &a210_dev !fref /products/zhihe/a210-dev.zh_CN.yml
+  revisions:
+    - date: 2025-11-06
+      status: 测试版
+      compatible: [ *a210_dev ]
+      changelog: |
+        初步支持
+      regressions: |
+        kernel: clk 存在问题
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/zhihe-a210/system-image/20251106-01/openEuler-24.03-LTS-SP1-base-Zhihe-A210-extlinux.img.sparse.zst
+          tags:
+            - 系统
+          hash:
+            sha256: 77a3adb7ecd081b9cd7dd6a906f525a2d1a4d97962bba0783d6dc4df448d3c0f
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/zhihe-a210/firmware/20251106-01/firmware-zhihe_a210_dev.zip
+          tags:
+            - 固件
+          hash:
+            sha256: 61a08c1a94ca08623fa7feeaaacc9ba2a036b2818f2f3b8392a5ff455aa89f1a
+      docs:
+        - file: !fref /docs/zhihe/a210-firmware-update.zh_CN.md
+        - file: !fref /docs/zhihe/a210-dev-hardware-requirements.zh_CN.md
+          exclusive: [ *a210_dev ]

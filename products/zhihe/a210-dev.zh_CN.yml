@@ -1,0 +1,48 @@
+A210-DEV:
+  vendor: !fref vendor.zh_CN.yml
+  soc: !fref a210.zh_CN.yml
+  type: SoM+Carrier
+  status: SUPPORTED
+  pictures: []
+  hw_info:
+    ram:
+      type: LPDDR4X
+      rate: 4266MT
+      width: 32
+      capacity:
+        - 8GB
+    storage:
+      - type: eMMC
+        capacity:
+          - 32GB
+      - type: M.2
+        revision: B-Key, SATA3.0
+        nums: 1
+    connectivity:
+      - type: USB Type-C
+        revision: '3.1'
+        nums: 1
+      - type: USB-A
+        revision: '2.0'
+        nums: 2
+      - type: Ethernet
+        revision: 1GbE
+        nums: 2
+      - type: HDMI
+        revision: '2.0'
+      - type: MIPI-CSI
+        revision: 2-lanes
+        nums: 2
+      - type: MIPI-CSI
+        revision: 4-lanes
+      - type: MIPI-DSI
+        revision: 4-lanes
+      - type: Mini-PCIe
+        revision: PCIe3.1x1
+      - type: 3.5mm Jack
+        revision: 4-rings
+      - type: WiFi
+        revision: 802.11 a/b/g/n/ac
+      - type: Bluetooth
+        revision: '5.0'
+    peripheral: []

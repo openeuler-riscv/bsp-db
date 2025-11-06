@@ -1,0 +1,10 @@
+A210:
+  vendor: !fref vendor.zh_CN.yml
+  release_date: '2025'
+  harts:
+    - name: 玄铁 C920v2
+      nums: 4
+      freq: 2.3GHz
+    - name: 玄铁 C908
+      nums: 4
+      freq: 1.9GHz

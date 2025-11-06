@@ -1,0 +1,10 @@
+A210:
+  vendor: !fref vendor.yml
+  release_date: '2025'
+  harts:
+    - name: Xuantie C920v2
+      nums: 4
+      freq: 2.3GHz
+    - name: Xuantie C908
+      nums: 4
+      freq: 1.9GHz
