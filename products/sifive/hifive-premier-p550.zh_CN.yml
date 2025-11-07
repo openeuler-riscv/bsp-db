@@ -1,0 +1,48 @@
+HiFive Premier P550:
+  vendor: !fref vendor.zh_CN.yml
+  soc: !fref ../eswin/eic7700x.zh_CN.yml
+  type: SoM+Carrier
+  status: SUPPORTED
+  pictures: []
+  hw_info:
+    ram:
+      type: LPDDR5X
+      rate: 6400MT
+      capacity:
+        - 16GB
+        - 32GB
+    storage:
+      - type: NOR Flash
+        capacity:
+          - 16MB
+      - type: eMMC
+        revision: '5.1'
+        capacity:
+          - 128GB
+      - type: microSD
+        revision: SDXC 3.0
+      - type: SATA
+        revision: 3.0@6Gbps
+        nums: 1
+    connectivity:
+      - type: USB-A
+        revision: '3.2'
+        nums: 2
+      - type: USB Type-E
+        revision: '3.2'
+        nums: 1
+      - type: F_PANEL USB
+        revision: '3.0'
+        nums: 1
+      - type: Ethernet
+        revision: 1GbE
+        nums: 2
+      - type: HDMI
+        revision: '2.0'
+      - type: PCIe x16
+        revision: PCIe3.0x4
+        nums: 1
+      - type: M.2
+        revision: E-Key, SDIO+UART
+        nums: 1
+    peripheral: []
