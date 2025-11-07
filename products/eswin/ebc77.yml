@@ -1,0 +1,42 @@
+EBC77:
+  vendor: !fref vendor.yml
+  soc: !fref eic7700x.yml
+  type: SBC
+  status: SUPPORTED
+  pictures: []
+  hw_info:
+    ram:
+      type: LPDDR5X
+      rate: 6400MT
+      capacity:
+        - 8GB
+    storage:
+      - type: NOR Flash
+        capacity:
+          - 8MB
+      - type: microSD
+        revision: SDXC 3.0
+    connectivity:
+      - type: USB-A
+        revision: '3.2'
+        nums: 2
+      - type: USB-A
+        revision: '2.0'
+        nums: 2
+      - type: Ethernet
+        revision: 1GbE
+        nums: 1
+      - type: MicroHDMI
+        revision: '2.0'
+      - type: MIPI-CSI
+        revision: 4-lanes
+        nums: 1
+      - type: MIPI-DSI/CSI
+        revision: 4-lanes
+      - type: FPC
+        revision: PCIe3.0x4
+      - type: WiFi
+        revision: 802.11 a/b/g/n/ac
+      - type: Bluetooth
+        revision: '5.0'
+    peripheral: []
