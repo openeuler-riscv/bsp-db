@@ -15,10 +15,11 @@
   flavor: Headless
   _compatible_:
     - &premier_p550 !fref /products/sifive/hifive-premier-p550.yml
+    - &ebc77 !fref /products/eswin/ebc77.yml
   revisions:
     - date: 2025-11-07
       status: Released
-      compatible: [ *premier_p550 ]
+      compatible: [ *premier_p550, *ebc77 ]
       changelog: |
         Initial support.
       files:
@@ -33,4 +34,10 @@
           hash:
             sha256: 4a6f348168fd1ea0e788d2f4fe349d4772a8d445036a4db9529254fb5acdf40d
           exclusive: [ *premier_p550 ]
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/eswin-eic7700/firmware/20251107-01/firmware-eswin_ebc77.zip
+          tags:
+            - firmware
+          hash:
+            sha256: b5dcf96ff3a57c80ca3cdf11c26c22e6eaecb247c494359b2e2f9ba362deb8be
+          exclusive: [ *ebc77 ]
       docs: []
