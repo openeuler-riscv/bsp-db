@@ -1,0 +1,36 @@
+- name: 无桌面镜像
+  userspace: !fref ../release-info.zh_CN.yml
+  kernel:
+    type: 厂商
+    version: '6.6'
+    src: 'https://git.oerv.ac.cn/OERV-BSP/kernel-eswin-eic7700'
+  isa:
+    march:
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - DistroBoot
+  flavor: 无桌面镜像
+  _compatible_:
+    - &premier_p550 !fref /products/sifive/hifive-premier-p550.zh_CN.yml
+  revisions:
+    - date: 2025-11-07
+      status: 发布版
+      compatible: [ *premier_p550 ]
+      changelog: |
+        初步支持
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/eswin-eic7700/system-image/20251107-01/openEuler-24.03-LTS-SP1-base-ESWin-EIC7700-extlinux.img.zst
+          tags:
+            - 系统
+          hash:
+            sha256: d9e3349045ad621392bbf4046d55c6e097c22603801301a5806d6e2d1cc5e58e
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/eswin-eic7700/firmware/20251107-01/firmware-hifive_premier_p550.zip
+          tags:
+            - 固件
+          hash:
+            sha256: 4a6f348168fd1ea0e788d2f4fe349d4772a8d445036a4db9529254fb5acdf40d
+          exclusive: [ *premier_p550 ]
+      docs: []
