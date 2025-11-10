@@ -54,6 +54,19 @@ DISTRO_RELEASES := $(patsubst $(ROOT_DIR)/%,%,$(DISTRO_RELEASES))
 IMAGESUITES := $(patsubst $(ROOT_DIR)/%,%,$(IMAGESUITES))
 SCHEMAS := $(patsubst $(ROOT_DIR)/%,%,$(SCHEMAS))
 
+define INPLACE_FILTER_OUT =
+$1 := $$(filter-out %.$2,$$($1))
+endef
+# Dedup multi-lang ymls
+IMAGESUITES.base := $(foreach suite,$(IMAGESUITES),$(suite:%.yml=%))
+$(foreach LANG,$(ALT_LANGS),$(eval $(call INPLACE_FILTER_OUT,IMAGESUITES.base,$(LANG))))
+IMAGESUITES := $(addsuffix .yml,$(IMAGESUITES.base))
+undefine IMAGESUITES.base
+
+.PHONY: test
+test:
+	@echo $(IMAGESUITES) | tr ' ' '\n'
+
 ##### Preparing staging dir
 ALL_YAML_SRCS := $(BOARDS) $(SOCS) $(VENDORS) $(DISTROS) $(DISTRO_RELEASES) $(IMAGESUITES) $(SCHEMAS)
 ALL_YAML_SRCS += $(foreach LANG,$(ALT_LANGS),$(addsuffix .$(LANG).yml,$(basename $(ALL_YAML_SRCS))))
