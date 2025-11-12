@@ -16,10 +16,11 @@
   _compatible_:
     - &premier_p550 !fref /products/sifive/hifive-premier-p550.yml
     - &ebc77 !fref /products/eswin/ebc77.yml
+    - &evb_a2 !fref /products/eswin/eic7700-evb-a2.yml
   revisions:
     - date: 2025-11-07
       status: Released
-      compatible: [ *premier_p550, *ebc77 ]
+      compatible: [ *premier_p550, *ebc77, *evb_a2 ]
       changelog: |
         Initial support.
       files:
@@ -40,4 +41,10 @@
           hash:
             sha256: b5dcf96ff3a57c80ca3cdf11c26c22e6eaecb247c494359b2e2f9ba362deb8be
           exclusive: [ *ebc77 ]
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/eswin-eic7700/firmware/20251107-01/firmware-eswin_eic7700_evb_a2.zip
+          tags:
+            - firmware
+          hash:
+            sha256: 7d73e34fed1314fad7f30632721eb0b5fd5728c1a662a60cbbb7a48ae6ae9f6f
+          exclusive: [ *evb_a2 ]
       docs: []
