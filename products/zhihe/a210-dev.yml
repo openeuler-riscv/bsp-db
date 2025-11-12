@@ -3,7 +3,8 @@ A210-DEV:
   soc: !fref a210.yml
   type: SoM+Carrier
   status: SUPPORTED
-  pictures: []
+  pictures:
+    - !fref /gallery/zhihe/a210-dev-v2/shot.webp
   hw_info:
     ram:
       type: LPDDR4X

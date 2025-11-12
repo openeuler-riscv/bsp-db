@@ -4,6 +4,7 @@ LicheePi 3A:
   type: SoM+Carrier
   status: SUPPORTED
   pictures:
+    - !fref /gallery/sipeed/lpi3a/shot.webp
     - !fref /gallery/sipeed/lpi3a/lpi3a.webp
   hw_info:
     ram:

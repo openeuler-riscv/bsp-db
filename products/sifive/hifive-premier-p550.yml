@@ -3,7 +3,8 @@ HiFive Premier P550:
   soc: !fref ../eswin/eic7700x.yml
   type: SoM+Carrier
   status: SUPPORTED
-  pictures: []
+  pictures:
+    - !fref /gallery/sifive/hifive-premier-p550/shot.webp
   hw_info:
     ram:
       type: LPDDR5X

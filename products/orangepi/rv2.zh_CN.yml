@@ -4,6 +4,7 @@ RV2:
   type: SBC
   status: SUPPORTED
   pictures:
+    - !fref /gallery/orangepi/rv2/shot.webp
     - !fref /gallery/orangepi/rv2/rv2-view.webp
   hw_info:
     ram:

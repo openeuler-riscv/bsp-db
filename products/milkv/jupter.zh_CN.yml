@@ -4,6 +4,7 @@ Jupter:
   type: mATX
   status: SUPPORTED
   pictures:
+    - !fref /gallery/milkv/jupter/shot.webp
     - !fref /gallery/milkv/jupter/jupter-view.webp
   hw_info:
     ram:

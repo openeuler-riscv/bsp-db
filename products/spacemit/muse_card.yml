@@ -6,6 +6,7 @@ MUSE Card:
   type: SBC
   status: SUPPORTED
   pictures:
+    - !fref /gallery/spacemit/muse-card/shot.webp
     - !fref /gallery/spacemit/muse-card/muse_card_official.webp
   hw_info:
     ram:

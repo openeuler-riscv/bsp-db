@@ -3,7 +3,8 @@ SG2044 EVB:
   soc: !fref ./sg2044.zh_CN.yml
   type: mATX
   status: SUPPORTED
-  pictures: []
+  pictures:
+    - !fref /gallery/sophgo/sg2044-evb/shot.webp
   hw_info:
     ram:
       type: LPDDR5X

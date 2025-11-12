@@ -4,6 +4,7 @@ Pioneer:
   type: mATX
   status: SUPPORTED
   pictures:
+    - !fref /gallery/milkv/pioneer/shot.webp
     - !fref /gallery/milkv/pioneer/milk-v-pioneer-board_png_gallery-lg.jpg
     - !fref /gallery/milkv/pioneer/milk-v-box-angle_png_gallery-lg.jpg
   hw_info:

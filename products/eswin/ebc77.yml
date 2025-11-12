@@ -3,7 +3,8 @@ EBC77:
   soc: !fref eic7700x.yml
   type: SBC
   status: SUPPORTED
-  pictures: []
+  pictures:
+    - !fref /gallery/eswin/ebc77/shot.webp
   hw_info:
     ram:
       type: LPDDR5X

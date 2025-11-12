@@ -4,6 +4,7 @@ MUSE Box:
   type: Mini-ITX
   status: SUPPORTED
   pictures:
+    - !fref /gallery/spacemit/muse-box/shot.webp
     - !fref /gallery/spacemit/muse-box/muse-box-view.webp
   hw_info:
     ram:

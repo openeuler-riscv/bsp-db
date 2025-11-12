@@ -4,6 +4,7 @@ VisionFive 2:
   type: SBC
   status: WIP
   pictures:
+    - !fref /gallery/starfive/vf2/shot.webp
     - !fref /gallery/starfive/vf2/vf2.jpg
   hw_info:
     ram:

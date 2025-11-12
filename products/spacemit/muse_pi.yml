@@ -6,6 +6,7 @@ MUSE Pi:
   type: SBC
   status: SUPPORTED
   pictures:
+    - !fref /gallery/spacemit/muse-pi/shot.webp
     - !fref /gallery/spacemit/muse-pi/musepi_front.webp
     - !fref /gallery/spacemit/muse-pi/musepi_back.webp
   hw_info:

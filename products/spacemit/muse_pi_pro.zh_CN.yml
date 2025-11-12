@@ -4,6 +4,7 @@ MUSE Pi Pro:
   type: SBC
   status: SUPPORTED
   pictures:
+    - !fref /gallery/spacemit/muse-pi-pro/shot.webp
     - !fref /gallery/spacemit/muse-pi-pro/musepipro_view.webp
   hw_info:
     ram:

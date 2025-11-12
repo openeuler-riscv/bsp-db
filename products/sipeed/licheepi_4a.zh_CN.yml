@@ -4,6 +4,7 @@ LicheePi 4A:
   type: SoM+Carrier
   status: SUPPORTED
   pictures:
+    - !fref /gallery/sipeed/lpi4a/shot.webp
     - !fref /gallery/sipeed/lpi4a/lpi4a.png
   hw_info:
     ram:

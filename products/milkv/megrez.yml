@@ -4,6 +4,7 @@ Megrez:
   type: mATX
   status: WIP
   pictures:
+    - !fref /gallery/milkv/megrez/shot.webp
     - !fref /gallery/milkv/megrez/megrez-view.webp
   hw_info:
     ram:

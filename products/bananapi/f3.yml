@@ -4,6 +4,7 @@ F3:
   type: SBC
   status: SUPPORTED
   pictures:
+    - !fref /gallery/bananapi/f3/shot.webp
     - !fref /gallery/bananapi/f3/f3-official.jpg
   hw_info:
     ram:
