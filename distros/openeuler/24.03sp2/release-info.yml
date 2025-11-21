@@ -1,0 +1,12 @@
+name: 24.03-LTS-SP2
+belongs_to: !fref ../distro.yml
+release_date: Jun., 2025
+components:
+  - name: glibc
+    version: 2.38-59.oe2403sp2
+  - name: gcc
+    version: 12.3.1-93.oe2403sp2
+  - name: llvm
+    version: 17.0.6-41.oe2403sp2
+  - name: qemu
+    version: 8.2.0-34.oe2403sp2

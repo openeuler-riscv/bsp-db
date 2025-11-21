@@ -1,0 +1,34 @@
+- name: 无桌面镜像
+  userspace: !fref ../release-info.zh_CN.yml
+  kernel:
+    type: 厂商
+    version: '6.6'
+    src: https://github.com/starfive-tech/linux/tree/JH7110_VisionFive2_6.6.y_devel
+  isa:
+    march:
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - DistroBoot
+  flavor: 无桌面镜像
+  _compatible_:
+    - &vf2 !fref /products/starfive/visionfive2.zh_CN.yml
+  revisions:
+    - date: 2025-11-21
+      status: 测试版
+      changelog: ""
+      compatible: [ *vf2 ]
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/starfive-jh7110/system-image/20251121-01/openEuler-24.03-LTS-SP2-base-StarFive-JH7110-extlinux.img.zst
+          tags:
+            - 系统
+          hash:
+            sha256: 822e27795331b0105a0718577423c31ebbe61c76950b1bf3c8715f5e0e76a32a
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/starfive-jh7110/firmware/20251118-01/firmware-starfive-jh7110.zip
+          tags:
+            - 固件
+          hash:
+            sha256: f646b3f134baa1bb9e7dc145ce4d4955235995b371df12e58011da1a5af5ba66
+      docs: []
