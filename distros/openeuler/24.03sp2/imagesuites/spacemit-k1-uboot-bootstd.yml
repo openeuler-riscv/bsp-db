@@ -1,0 +1,45 @@
+- name: Headless Image
+  userspace: !fref ../release-info.yml
+  kernel:
+    type: Vendor
+    version: '6.6'
+    src: 'https://git.oerv.ac.cn/OERV-BSP/kernel-spacemit-k1'
+  isa:
+    march:
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - DistroBoot
+  flavor: Headless
+  _compatible_:
+    - &musepi !fref /products/spacemit/muse_pi.yml
+    - &musecard !fref /products/spacemit/muse_card.yml
+    - &bpif3 !fref /products/bananapi/f3.yml
+    - &jupter !fref /products/milkv/jupter.yml
+    - &rv2 !fref /products/orangepi/rv2.yml
+    - &musebox !fref /products/spacemit/muse_box.yml
+    - &musepipro !fref /products/spacemit/muse_pi_pro.yml
+    - &lpi3a !fref /products/sipeed/licheepi_3a.yml
+  revisions:
+    - date: 2025-12-03
+      status: Released
+      compatible: [*musepi, *musecard, *bpif3, *jupter, *musebox, *musepipro, *lpi3a ]
+      changelog: |
+        Sync with SDK 2.2.7
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/spacemit-k1/system-image/20251203-01/openEuler-24.03-LTS-SP2-base-SpacemiT-K1-extlinux.img.zst
+          tags:
+            - system
+          hash:
+            sha256: 95d1aa0a01590fb3901a525c2be1668db7d01bae9595dbddddf5a231eed2fe9b
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/spacemit-k1/firmware/20251203-01/bl-spacemit-k1.zip
+          tags:
+            - firmware
+          hash:
+            sha256: c72b16ff9c2d0cc51988f777217786f264f29542c745091b43d19cd332cf1c9c
+      docs:
+        - file: !fref /docs/spacemit/muse-pi-pro-manual-firmware-deploy.md
+          exclusive: [ *musepipro ]
+        - file: !fref /docs/spacemit/preinstalled-disk-image-usage.md
