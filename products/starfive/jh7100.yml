@@ -1,0 +1,9 @@
+JH7100:
+  vendor: !fref vendor.yml
+  release_date: '2021'
+  harts:
+    - name: SiFive U74
+      nums: 2
+      freq: 1GHz
+    - name: SiFive E24
+      nums: 1

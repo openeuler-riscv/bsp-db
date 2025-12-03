@@ -1,0 +1,21 @@
+VisionFive:
+  vendor: !fref vendor.yml
+  soc: !fref jh7110.yml
+  type: SBC
+  status: WIP
+  pictures:
+    - !fref /gallery/starfive/vf/shot.webp
+  hw_info:
+    ram:
+      type: LPDDR4
+      width: 32
+      capacity:
+        - 8GB
+    storage:
+      - type: NOR Flash
+        capacity:
+          - 16MB
+      - type: microSD
+        revision: SDXC 3.0
+    connectivity: []
+    peripheral: []
