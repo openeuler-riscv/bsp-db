@@ -1,0 +1,22 @@
+BeagleV Ahead:
+  vendor: !fref vendor.yml
+  soc: !fref ../xuantie/th1520.yml
+  type: SBC
+  status: SUPPORTED
+  pictures:
+    - !fref /gallery/beagleboard/beaglev-ahead/shot.webp
+  hw_info:
+    ram:
+      type: LPDDR4X
+      width: 32
+      capacity:
+        - 4GB
+    storage:
+      - type: eMMC
+        revision: '5.1'
+        capacity:
+          - 16GB
+      - type: microSD
+        revision: SDXC 3.0
+    connectivity: []
+    peripheral: []
