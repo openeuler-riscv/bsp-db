@@ -1,0 +1,28 @@
+Mars:
+  vendor: !fref vendor.zh_CN.yml
+  soc: !fref ../starfive/jh7110.zh_CN.yml
+  type: SBC
+  status: SUPPORTED
+  pictures:
+    - !fref /gallery/milkv/mars/shot.webp
+  hw_info:
+    ram:
+      type: LPDDR4X
+      width: 32
+      capacity:
+        - 1GB
+        - 2GB
+        - 4GB
+        - 8GB
+    storage:
+      - type: NOR Flash
+        capacity:
+          - 16MB
+      - type: eMMC
+        revision: '5.1'
+        capacity:
+          - NC
+      - type: microSD
+        revision: SDXC 3.0
+    connectivity: []
+    peripheral: []
