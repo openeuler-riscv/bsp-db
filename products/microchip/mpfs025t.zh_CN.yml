@@ -1,0 +1,9 @@
+MPFS025T:
+  vendor: !fref vendor.zh_CN.yml
+  release_date: '0000'
+  harts:
+    - name: SiFive U54
+      nums: 4
+      freq: 667MHz
+    - name: SiFive E51
+      nums: 1
