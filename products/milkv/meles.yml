@@ -1,0 +1,23 @@
+Meles:
+  vendor: !fref vendor.yml
+  soc: !fref ../xuantie/th1520.yml
+  type: SBC
+  status: SUPPORTED
+  pictures:
+    - !fref /gallery/milkv/meles/shot.webp
+  hw_info:
+    ram:
+      type: LPDDR4X
+      width: 32
+      capacity:
+        - 8GB
+        - 16GB
+    storage:
+      - type: eMMC
+        revision: '5.1'
+        capacity:
+          - NC
+      - type: microSD
+        revision: SDXC 3.0
+    connectivity: []
+    peripheral: []

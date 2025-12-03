@@ -4,3 +4,4 @@ BOARDS += $(MILKV_DIR)/pioneer.yml
 BOARDS += $(MILKV_DIR)/megrez.yml
 BOARDS += $(MILKV_DIR)/jupter.yml
 BOARDS += $(MILKV_DIR)/mars.yml
+BOARDS += $(MILKV_DIR)/meles.yml
