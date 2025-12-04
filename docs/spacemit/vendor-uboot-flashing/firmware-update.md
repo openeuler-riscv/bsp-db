@@ -10,7 +10,7 @@
 | SpacemiT MUSE Card | Type C 数据线 | 无需 | 无需 | 无需 |
 | SpacemiT MUSE Box | USB A 口公对公数据线 | 12V 电源 | 无需 | 调节拨码开关 |
 | SpacemiT MUSE Pi Pro | Type C 数据线） | 无需 | 无需 | 无需 |
-| Milk-V Jupter | Type C 数据线 | 12V 电源 | 无需 | 无需 |
+| Milk-V Jupiter | Type C 数据线 | 12V 电源 | 无需 | 无需 |
 | OrangePi RV2 | USB A 口公对公数据线 | Type C 电源 | 无需 | 无需 |
 | BananaPi F3 | Type C 数据线 | 无需 | 补焊一颗 Flash | 调节拨码开关 |
 
@@ -139,7 +139,7 @@ EOF
 1. 摁住板卡上的 FDL 按键
 2. 将 Type C 口使用数据线连接到电脑
 
-##### Milk-V Jupter
+##### Milk-V Jupiter
 
 1. 将 Type C 口使用数据线连接到电脑
 2. 摁住板卡上的 RECOVERY 按键
