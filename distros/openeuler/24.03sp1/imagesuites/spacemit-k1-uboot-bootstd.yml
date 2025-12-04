@@ -17,14 +17,14 @@
     - &musepi !fref /products/spacemit/muse_pi.yml
     - &musecard !fref /products/spacemit/muse_card.yml
     - &bpif3 !fref /products/bananapi/f3.yml
-    - &jupter !fref /products/milkv/jupter.yml
+    - &jupiter !fref /products/milkv/jupiter.yml
     - &rv2 !fref /products/orangepi/rv2.yml
     - &musebox !fref /products/spacemit/muse_box.yml
     - &musepipro !fref /products/spacemit/muse_pi_pro.yml
   revisions:
     - date: 2025-04-21
       status: Released
-      compatible: [*musepi, *musecard, *bpif3, *jupter, *musebox, *musepipro ]
+      compatible: [*musepi, *musecard, *bpif3, *jupiter, *musebox, *musepipro ]
       changelog: |
         none
       regressions: |

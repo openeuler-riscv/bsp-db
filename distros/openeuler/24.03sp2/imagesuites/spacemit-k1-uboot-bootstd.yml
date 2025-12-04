@@ -17,7 +17,7 @@
     - &musepi !fref /products/spacemit/muse_pi.yml
     - &musecard !fref /products/spacemit/muse_card.yml
     - &bpif3 !fref /products/bananapi/f3.yml
-    - &jupter !fref /products/milkv/jupter.yml
+    - &jupiter !fref /products/milkv/jupiter.yml
     - &rv2 !fref /products/orangepi/rv2.yml
     - &musebox !fref /products/spacemit/muse_box.yml
     - &musepipro !fref /products/spacemit/muse_pi_pro.yml
@@ -25,7 +25,7 @@
   revisions:
     - date: 2025-12-03
       status: Released
-      compatible: [*musepi, *musecard, *bpif3, *jupter, *musebox, *musepipro, *lpi3a ]
+      compatible: [*musepi, *musecard, *bpif3, *jupiter, *musebox, *musepipro, *lpi3a ]
       changelog: |
         Sync with SDK 2.2.7
       files:
@@ -43,3 +43,5 @@
         - file: !fref /docs/spacemit/muse-pi-pro-manual-firmware-deploy.md
           exclusive: [ *musepipro ]
         - file: !fref /docs/spacemit/preinstalled-disk-image-usage.md
+        - file: !fref /docs/milkv/jupiter-2403sp2-usage.md
+          exclusive: [ *jupiter ]

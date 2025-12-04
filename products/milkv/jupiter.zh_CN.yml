@@ -1,11 +1,11 @@
-Jupter:
+Jupiter:
   vendor: !fref vendor.zh_CN.yml
   soc: !fref ../spacemit/k1.zh_CN.yml
   type: mATX
   status: SUPPORTED
   pictures:
-    - !fref /gallery/milkv/jupter/shot.webp
-    - !fref /gallery/milkv/jupter/jupter-view.webp
+    - !fref /gallery/milkv/jupiter/shot.webp
+    - !fref /gallery/milkv/jupiter/jupiter-view.webp
   hw_info:
     ram:
       type: LPDDR4X
