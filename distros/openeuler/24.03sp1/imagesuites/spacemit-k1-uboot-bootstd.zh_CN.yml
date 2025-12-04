@@ -17,14 +17,14 @@
     - &musepi !fref /products/spacemit/muse_pi.zh_CN.yml
     - &musecard !fref /products/spacemit/muse_card.zh_CN.yml
     - &bpif3 !fref /products/bananapi/f3.zh_CN.yml
-    - &jupter !fref /products/milkv/jupter.zh_CN.yml
+    - &jupiter !fref /products/milkv/jupiter.zh_CN.yml
     - &rv2 !fref /products/orangepi/rv2.zh_CN.yml
     - &musebox !fref /products/spacemit/muse_box.zh_CN.yml
     - &musepipro !fref /products/spacemit/muse_pi_pro.zh_CN.yml
   revisions:
     - date: 2025-04-21
       status: 发布版
-      compatible: [*musepi, *musecard, *bpif3, *jupter, *musebox, *musepipro ]
+      compatible: [*musepi, *musecard, *bpif3, *jupiter, *musebox, *musepipro ]
       changelog: |
         无
       regressions: |
