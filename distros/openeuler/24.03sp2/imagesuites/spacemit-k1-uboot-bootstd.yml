@@ -43,3 +43,5 @@
         - file: !fref /docs/spacemit/muse-pi-pro-manual-firmware-deploy.md
           exclusive: [ *musepipro ]
         - file: !fref /docs/spacemit/preinstalled-disk-image-usage.md
+        - file: !fref /docs/milkv/jupiter-2403sp2-usage.md
+          exclusive: [ *jupiter ]
