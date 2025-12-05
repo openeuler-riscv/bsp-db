@@ -31,4 +31,6 @@
             - firmware
           hash:
             sha256: f646b3f134baa1bb9e7dc145ce4d4955235995b371df12e58011da1a5af5ba66
-      docs: []
+      docs:
+        - file: !fref /docs/starfive/visionFive2_boot.md
+          exclusive: [ *vf2 ]
