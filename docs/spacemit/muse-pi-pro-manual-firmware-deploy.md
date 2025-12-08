@@ -4,7 +4,7 @@
 
 所需物料：
 
-- SpacemiT MUSE Pi Pro 单板计算机
+- SpacemiT MUSE Pi / MUSE Pi Pro 单板计算机
 - USB Type-C 数据线缆
   - 规格 USB2.0 及以上
 - \[可选] 串口适配器

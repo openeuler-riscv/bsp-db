@@ -41,5 +41,5 @@
             sha256: c72b16ff9c2d0cc51988f777217786f264f29542c745091b43d19cd332cf1c9c
       docs:
         - file: !fref /docs/spacemit/muse-pi-pro-manual-firmware-deploy.md
-          exclusive: [ *musepipro ]
+          exclusive: [ *musepi, *musepipro ]
         - file: !fref /docs/spacemit/preinstalled-disk-image-usage.md
