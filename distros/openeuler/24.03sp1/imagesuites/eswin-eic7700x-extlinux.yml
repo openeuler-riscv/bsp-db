@@ -47,4 +47,6 @@
           hash:
             sha256: 7d73e34fed1314fad7f30632721eb0b5fd5728c1a662a60cbbb7a48ae6ae9f6f
           exclusive: [ *evb_a2 ]
-      docs: []
+      docs:
+        - file: !fref /docs/sifive/sifive-p550-boot.md
+          exclusive: [ *premier_p550 ]
