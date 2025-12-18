@@ -100,6 +100,8 @@ zstd -d openEuler-*.img.sparse.zstd
 fastboot flash mmc0 FILENAME.img.sparse
 ```
 
+> 得到的镜像如果烧录不进去可能需要经过 `img2simg` 转换成 Android 的压缩格式.
+
 ### 完成烧录
 
 此时可以对设备下电。
