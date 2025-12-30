@@ -1,0 +1,34 @@
+R2S:
+  vendor: !fref vendor.zh_CN.yml
+  soc: !fref ../ky/x1.zh_CN.yml
+  type: SBC
+  status: SUPPORTED
+  pictures: []
+  hw_info:
+    ram:
+      type: LPDDR4X
+      rate: 4266MT
+      width: 32
+      capacity:
+        - 2GB
+        - 4GB
+        - 8GB
+    storage:
+      - type: eMMC
+        revision: '5.1'
+        capacity:
+          - 8GB
+    connectivity:
+      - type: USB-A
+        revision: '3.0'
+        nums: 1
+      - type: USB-A
+        revision: '2.0 OTG'
+        nums: 1
+      - type: Ethernet
+        revision: 1GbE
+        nums: 2
+      - type: Ethernet
+        revision: 2.5GbE
+        nums: 2
+    peripheral: []
