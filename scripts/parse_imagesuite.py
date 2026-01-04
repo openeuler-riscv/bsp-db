@@ -84,6 +84,7 @@ def main(args: argparse.Namespace):
                         target_release_json = next((existing_release for existing_release in target_distro_json["releases"] if existing_release['id'] == distro_release["id"]), None)
                         if not any(existing_suite["id"] == suite_json["id"] for existing_suite in target_release_json["imagesuites"]):
                             target_release_json["imagesuites"].append(suite_json)
+                        suite_json = next((existing_suite for existing_suite in target_release_json["imagesuites"] if existing_suite['id'] == suite_json["id"]), None)
 
                         for imgfile in revision["files"]:
                             if "exclusive" in imgfile:
