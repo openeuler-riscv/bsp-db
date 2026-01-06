@@ -40,5 +40,4 @@
             - firmware
           hash:
             sha256: 6c94fe2d98570806137cc2f78f58729250b6321a1db8b390a047b0171e3fa155
-      docs:
-        - file: !fref /docs/spacemit/k1-uboot-bootstd.md
+      docs: []
