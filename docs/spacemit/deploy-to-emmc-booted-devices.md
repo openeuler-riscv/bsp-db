@@ -38,6 +38,10 @@
 
 ### 执行烧写
 
+#### 同时部署固件与系统镜像
+
+> 此流程无需板卡配备 eMMC 以外的其它存储设备
+
 执行下述命令将固件写入 eMMC：
 
 ```shell
@@ -58,3 +62,28 @@ fastboot flash fsbl FSBL.bin
 ```shell
 fastboot flash mmc2 xxx-sdmmc.img
 ```
+
+#### 仅在 eMMC 上部署固件
+
+> 此流程适用于板卡未提供 Flash，但提供了 SD、NVMe、Ethernet 或 USB 等其它外部存储接口的情况
+
+执行下述命令将固件写入 eMMC：
+
+```shell
+fastboot stage FSBL.bin
+fastboot continue
+sleep 1
+fastboot stage u-boot.itb
+fastboot continue
+sleep 1
+fastboot flash gpt partition-sdmmc.json
+fastboot flash bootinfo bootinfo_sd.bin
+fastboot flash fsbl FSBL.bin
+fastboot flash opensbi fw_dynamic.itb
+fastboot flash uboot u-boot.itb
+fastboot flash env u-boot-env-default.bin
+```
+
+下载并解压文件列表中标记为“标准镜像”的条目，得到后缀为 `.img` 的可烧录镜像。
+
+将其烧录至目标存储设备即可。
