@@ -1,0 +1,38 @@
+- name: Headless Image
+  userspace: !fref ../release-info.yml
+  kernel:
+    type: Vendor
+    version: '6.6'
+    src: 'https://git.oerv.ac.cn/OERV-BSP/kernel-zhihe-a210'
+  isa:
+    march:
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - DistroBoot
+  flavor: Headless
+  _compatible_:
+    - &a210_dev !fref /products/zhihe/a210-dev.yml
+  revisions:
+    - date: 2026-01-09
+      status: Released
+      compatible: [ *a210_dev ]
+      changelog: |
+        Version bump to develop 251204
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/zhihe-a210/system-image/20260110-01/openEuler-24.03-LTS-SP2-base-Zhihe-A210-extlinux.img.zst
+          tags:
+            - system-image
+          hash:
+            sha256: ef6c3416e76a7b852a125f28594f0e51e89ec16b44da3a308ac7c10b7265c495
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/zhihe-a210/firmware/20260110-01/bl-zhihe-a210.zip
+          exclusive: [ *a210_dev ]
+          tags:
+            - firmware
+          hash:
+            sha256: 0a86fff29c7525de91990497abf46b079a76044eede60b01b44bfc1e09c70801
+      docs:
+        - file: !fref /docs/zhihe/a210-dev-usage-vendor-uboot-v1.md
+          exclusive: [ *a210_dev ]
