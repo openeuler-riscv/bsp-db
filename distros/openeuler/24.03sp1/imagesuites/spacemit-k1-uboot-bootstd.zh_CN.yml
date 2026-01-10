@@ -19,9 +19,54 @@
     - &bpif3 !fref /products/bananapi/f3.zh_CN.yml
     - &jupiter !fref /products/milkv/jupiter.zh_CN.yml
     - &rv2 !fref /products/orangepi/rv2.zh_CN.yml
+    - &r2s !fref /products/orangepi/r2s.zh_CN.yml
     - &musebox !fref /products/spacemit/muse_box.zh_CN.yml
     - &musepipro !fref /products/spacemit/muse_pi_pro.zh_CN.yml
+    - &lpi3a !fref /products/sipeed/licheepi_3a.zh_CN.yml
   revisions:
+    - date: 2026-01-10
+      status: 发布版
+      compatible: [*musepi, *musecard, *bpif3, *jupiter, *rv2, *r2s, *musebox, *musepipro, *lpi3a ]
+      changelog: |
+        增加支持 sdmmc 启动的镜像
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/spacemit-k1/system-image/20260110-01/openEuler-24.03-LTS-SP1-base-SpacemiT-K1-extlinux.img.zst
+          tags:
+            - 标准镜像
+          hash:
+            sha256: 58247387f460c6865e88e94d907df3067bbd7d5918e28f8b688e96985351b2b5
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/spacemit-k1/system-image/20260110-01/openEuler-24.03-LTS-SP1-base-SpacemiT-K1-sdmmc.img.zst
+          tags:
+            - SDMMC镜像
+          hash:
+            sha256: 8b25dbd77c9864b050e038465e0b878bfb4911f80fe4ec5008f9f8f5f1a0d885
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/spacemit-k1/firmware/20251230-01/bl-spacemit-k1.zip
+          tags:
+            - 固件
+          hash:
+            sha256: 59b0ff414c6561e2a4a547b8774305bd676e72a25a55fe8e53b482c0dcb2416e
+      docs:
+        - file: !fref /docs/spacemit/deploy-to-flash-booted-devices.md
+          exclusive: [ *musepi, *musecard, *jupiter, *rv2, *musebox, *musepipro ]
+        - file: !fref /docs/spacemit/deploy-to-emmc-booted-devices.md
+          exclusive: [ *musepi, *bpif3, *r2s, *musebox, *lpi3a ]
+        - file: !fref /docs/spacemit/deploy-to-sdcard-booted-devices.md
+          exclusive: [ *musepi, *musecard, *bpif3, *jupiter, *rv2, *musepipro, *lpi3a ]
+        - file: !fref /docs/spacemit/hardware-preparing-muse-pi.md
+          exclusive: [ *musepi, *bpif3 ]
+        - file: !fref /docs/spacemit/hardware-preparing-muse-card.md
+          exclusive: [ *musecard, *musepipro ]
+        - file: !fref /docs/spacemit/hardware-preparing-milkv-jupiter.md
+          exclusive: [ *jupiter ]
+        - file: !fref /docs/spacemit/hardware-preparing-opi-rv2.md
+          exclusive: [ *rv2 ]
+        - file: !fref /docs/spacemit/hardware-preparing-opi-r2s.md
+          exclusive: [ *r2s ]
+        - file: !fref /docs/spacemit/hardware-preparing-muse-box.md
+          exclusive: [ *musebox ]
+        - file: !fref /docs/spacemit/hardware-preparing-lpi3a.md
+          exclusive: [ *lpi3a ]
+        - file: !fref /docs/spacemit/fastboot-host-conf.md
     - date: 2025-04-21
       status: 发布版
       compatible: [*musepi, *musecard, *bpif3, *jupiter, *musebox, *musepipro ]

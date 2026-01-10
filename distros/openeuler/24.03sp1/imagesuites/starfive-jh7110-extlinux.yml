@@ -1,0 +1,47 @@
+- name: Headless Pre-installed Image
+  userspace: !fref ../release-info.yml
+  kernel:
+    type: Vendor
+    version: '6.6'
+    src: https://github.com/starfive-tech/linux/tree/JH7110_VisionFive2_6.6.y_devel
+  isa:
+    march:
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - DistroBoot
+  flavor: Headless
+  _compatible_:
+    - &vf2 !fref /products/starfive/visionfive2.yml
+    - &opi_rv !fref /products/orangepi/rv.yml
+    - &mars !fref /products/milkv/mars.yml
+  revisions:
+    - date: 2026-01-10
+      status: Released
+      changelog: ""
+      compatible: [ *vf2, *opi_rv, *mars ]
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/starfive-jh7110/system-image/20260110-01/openEuler-24.03-LTS-SP1-base-StarFive-JH7110-extlinux.img.zst
+          tags:
+            - system-image
+          hash:
+            sha256: d1a80cd6580076396564e68bec77622cd634263fe1a15f76dee1007556f6eb86
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/starfive-jh7110/firmware/20260109-01/firmware_updater.sd.img.zst
+          tags:
+            - firmware-updater
+          hash:
+            sha256: 64060ca43606529405c826429c22333deb27e0f7f444601270def89d0195b72c
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/starfive-jh7110/firmware/20260109-01/bl-starfive-jh7110.zip
+          tags:
+            - firmware-files
+          hash:
+            sha256: 332206a929ada350347d58f7cc827ce30ffa250e9af303358e6c32ed6d642bac
+      docs:
+        - file: !fref /docs/starfive/vf2-usage-mainline-uboot-v1.md
+          exclusive: [ *vf2 ]
+        - file: !fref /docs/orangepi/rv-usage-mainline-uboot-v1.md
+          exclusive: [ *opi_rv ]
+        - file: !fref /docs/milkv/mars-usage-upstream-uboot-v1.md
+          exclusive: [ *mars ]

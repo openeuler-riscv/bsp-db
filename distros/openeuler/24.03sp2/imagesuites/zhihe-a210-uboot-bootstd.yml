@@ -16,7 +16,7 @@
   _compatible_:
     - &a210_dev !fref /products/zhihe/a210-dev.yml
   revisions:
-    - date: 2026-01-09
+    - date: 2026-01-10
       status: Released
       compatible: [ *a210_dev ]
       changelog: |

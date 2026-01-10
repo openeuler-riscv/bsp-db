@@ -16,6 +16,26 @@
   _compatible_:
     - &a210_dev !fref /products/zhihe/a210-dev.zh_CN.yml
   revisions:
+    - date: 2026-01-10
+      status: 发布版
+      compatible: [ *a210_dev ]
+      changelog: |
+        滚动至 develop 251204 版本
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/zhihe-a210/system-image/20260110-01/openEuler-24.03-LTS-SP1-base-Zhihe-A210-extlinux.img.zst
+          tags:
+            - 系统镜像
+          hash:
+            sha256: 24f72dfc92ff1c0a8611c1837b488cdc106090237a782c30145a703a038aed2c
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/zhihe-a210/firmware/20260110-01/bl-zhihe-a210.zip
+          exclusive: [ *a210_dev ]
+          tags:
+            - 固件
+          hash:
+            sha256: 0a86fff29c7525de91990497abf46b079a76044eede60b01b44bfc1e09c70801
+      docs:
+        - file: !fref /docs/zhihe/a210-dev-usage-vendor-uboot-v1.md
+          exclusive: [ *a210_dev ]
     - date: 2025-11-06
       status: 测试版
       compatible: [ *a210_dev ]
