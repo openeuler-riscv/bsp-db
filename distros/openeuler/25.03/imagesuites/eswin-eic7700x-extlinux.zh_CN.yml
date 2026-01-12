@@ -1,0 +1,65 @@
+- name: 无桌面镜像
+  userspace: !fref ../release-info.zh_CN.yml
+  kernel:
+    type: 厂商
+    version: '6.6'
+    src: 'https://git.oerv.ac.cn/OERV-BSP/kernel-eswin-eic7700'
+  isa:
+    march:
+      <<: !inc
+        path: /include/yaml/riscv-extensions.yml
+        node: [ profile, RVA20, U64, mandatory ]
+    mabi: lp64d
+  loader:
+    - DistroBoot
+  flavor: 无桌面镜像
+  _compatible_:
+    - &p550 !fref /products/sifive/hifive-premier-p550.zh_CN.yml
+    - &ebc77 !fref /products/eswin/ebc77.zh_CN.yml
+    - &evb_a2 !fref /products/eswin/eic7700-evb-a2.zh_CN.yml
+    - &megrez !fref /products/milkv/megrez.zh_CN.yml
+  revisions:
+    - date: 2026-01-10
+      status: 发布版
+      compatible: [*megrez, *p550, *ebc77, *evb_a2 ]
+      changelog: |
+        支持 Milk-V Megrez
+      files:
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/eswin-eic7700/system-image/20260110-01/openEuler-25.03-base-ESWin-EIC7700-extlinux.img.zst
+          tags:
+            - system-image
+          hash:
+            sha256: af11263d5434505666bfaff9cf652def20407995de240eb91fa126b367d53a67
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/eswin-eic7700/firmware/20260109-01/bootloader-eswin_ebc77.bin.zst
+          exclusive: [ *ebc77 ]
+          tags:
+            - firmware
+          hash:
+            sha256: 51e336d6c261fc55c2694a3d99585243b35896dc9cbd2d45aedcacd3939f2229
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/eswin-eic7700/firmware/20260109-01/bootloader-eswin_eic7700_evb_a2.bin.zst
+          exclusive: [ *evb_a2 ]
+          tags:
+            - firmware
+          hash:
+            sha256: 4e756b1bc3a2a628a64f3dba742f48bc83b7dafe62973558a2158f98114d6a14
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/eswin-eic7700/firmware/20260109-01/bootloader-hifive_premier_p550.bin.zst
+          exclusive: [ *p550 ]
+          tags:
+            - firmware
+          hash:
+            sha256: 03628689a752c059ee3d600c5d7db9713f235f37e57907968595d5012c7bd8c7
+        - url: https://repo.tarsier-infra.isrc.ac.cn/openEuler-RISC-V/BSP/eswin-eic7700/firmware/20260109-01/bootloader-milkv_megrez.bin.zst
+          exclusive: [ *megrez ]
+          tags:
+            - firmware
+          hash:
+            sha256: ff703f86faa5b64809e56644dbf0cd73ca6f0a312e06cd35cfa7745e477c31c7
+      docs:
+        - file: !fref /docs/eswin/ebc77-usage-vendor-uboot-v1.md
+          exclusive: [ *ebc77 ]
+        - file: !fref /docs/eswin/evb-a2-usage-vendor-uboot-v1.md
+          exclusive: [ *evb_a2 ]
+        - file: !fref /docs/sifive/premier-p550-usage-vendor-uboot-v1.md
+          exclusive: [ *p550 ]
+        - file: !fref /docs/milkv/megrez-usage-vendor-uboot-v1.md
+          exclusive: [ *megrez ]
