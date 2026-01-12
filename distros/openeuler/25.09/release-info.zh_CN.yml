@@ -1,0 +1,12 @@
+name: '25.09'
+belongs_to: !fref ../distro.zh_CN.yml
+release_date: Sep., 2025
+components:
+  - name: glibc
+    version: 2.38-69.oe2509
+  - name: gcc
+    version: 12.3.1-97.oe2509
+  - name: llvm
+    version: 17.0.6-49.oe2509
+  - name: qemu
+    version: 8.2.0-40.oe2509
